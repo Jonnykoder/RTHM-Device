@@ -1,0 +1,14 @@
+
+
+
+---AT COMMANDS---
+1. Initialize AT command
+	AT
+2. Check if the sim card is unlocked
+	AT+CPIN?
+3. Initialize SMS sending
+	IAT+CMGF=1
+
+4. SET TARGET NUMBER
+	AT+CMGS="+639208840606"
+	AT+CMGS="+639155006780"
