@@ -38,6 +38,6 @@ rcv = port.read(10)
  
 port.write("\x1A") # Enable to send SMS
 
-"""for i in range(10):
+for i in range(10):
     rcv = port.read(10)
-    print (rcv)"""
+    print (rcv)
