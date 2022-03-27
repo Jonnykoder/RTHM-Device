@@ -35,37 +35,6 @@
     <property name="flat">
      <bool>false</bool>
     </property>
-    <widget class="QLabel" name="btnStart">
-     <property name="geometry">
-      <rect>
-       <x>387</x>
-       <y>440</y>
-       <width>250</width>
-       <height>90</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>30</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 102, 0);
-border-radius:30px;
-color: #ffffff;</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::Box</enum>
-     </property>
-     <property name="text">
-      <string>Start</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
@@ -109,9 +78,33 @@ color: #ffffff;</string>
      <property name="frameShadow">
       <enum>QFrame::Plain</enum>
      </property>
+     <widget class="QPushButton" name="btnStart_2">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>460</y>
+        <width>191</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>30</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 102, 0);
+border-radius:30px;
+color: #ffffff;</string>
+      </property>
+      <property name="text">
+       <string>Start</string>
+      </property>
+     </widget>
     </widget>
     <zorder>frame</zorder>
-    <zorder>btnStart</zorder>
     <zorder>label_2</zorder>
    </widget>
   </widget>
@@ -121,7 +114,7 @@ color: #ffffff;</string>
      <x>0</x>
      <y>0</y>
      <width>1024</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
