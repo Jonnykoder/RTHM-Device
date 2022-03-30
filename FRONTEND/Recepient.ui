@@ -135,14 +135,19 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;</string>
      <string>    Send</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="txtRecepient">
+   <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>120</x>
       <y>140</y>
       <width>331</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>18</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color:qlineargradient(spread:pad, x1:0.005, y1:0, x2:1, y2:1, stop:0 rgba(200, 197, 191, 255), stop:1 rgba(255, 255, 255, 255));
@@ -150,13 +155,41 @@ border: 0;
 border-radius:16px;
 color: black;</string>
     </property>
+    <property name="text">
+     <string>+639-</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblInput">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>90</y>
+      <width>331</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>26</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#3F3D56;</string>
+    </property>
+    <property name="text">
+     <string>Input Recepient</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <zorder>lblNamePlaceholder</zorder>
    <zorder>label</zorder>
    <zorder>btnBack</zorder>
    <zorder>lblName</zorder>
    <zorder>btnSend</zorder>
-   <zorder>txtRecepient</zorder>
+   <zorder>lineEdit</zorder>
+   <zorder>lblInput</zorder>
   </widget>
  </widget>
  <resources/>
