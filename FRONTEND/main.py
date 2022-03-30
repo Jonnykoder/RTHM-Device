@@ -74,6 +74,7 @@ class Scanner(QDialog):
         loadUi("Scanner.ui", self)
         self.btnBack.clicked.connect(self.goBack)
 
+    
 
     def goBack(self):
         newuser = NewUser()  # <---Instantiate NewUser  Class
