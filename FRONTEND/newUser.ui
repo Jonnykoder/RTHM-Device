@@ -65,8 +65,7 @@ background-color: #FFE2CE;
 border-radius: 20px;
 border:1px solid white;
 padding: 4px;
-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-qproperty-icon: url(&quot;./images/icons/btnHome.png&quot;);</string>
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;</string>
     </property>
     <property name="text">
      <string> Home</string>
