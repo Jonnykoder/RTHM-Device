@@ -1,6 +1,0 @@
-Installing picocom 
-
-	sudo apt-get install picocom
-
-picocom access:
-	picocom --baud 9600 /dev/ttyS0
