@@ -74,8 +74,8 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;</string>
    <widget class="QLabel" name="lblHeartRate">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>140</y>
+      <x>135</x>
+      <y>150</y>
       <width>61</width>
       <height>31</height>
      </rect>
@@ -90,8 +90,8 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;</string>
    <widget class="QLabel" name="lblOxygenLevel">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>210</y>
+      <x>135</x>
+      <y>200</y>
       <width>61</width>
       <height>31</height>
      </rect>
@@ -106,8 +106,8 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;</string>
    <widget class="QLabel" name="lblBodyTemp">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>130</y>
+      <x>406</x>
+      <y>150</y>
       <width>61</width>
       <height>31</height>
      </rect>
@@ -123,7 +123,7 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;</string>
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>220</y>
+      <y>200</y>
       <width>61</width>
       <height>31</height>
      </rect>
@@ -170,36 +170,48 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;</string>
    <widget class="QLabel" name="lblSHeart">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>70</y>
-      <width>210</width>
-      <height>210</height>
+      <x>50</x>
+      <y>55</y>
+      <width>230</width>
+      <height>230</height>
      </rect>
     </property>
     <property name="frameShape">
-     <enum>QFrame::Box</enum>
+     <enum>QFrame::NoFrame</enum>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/loading.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="lblSTemp">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>70</y>
-      <width>210</width>
-      <height>210</height>
+      <x>320</x>
+      <y>55</y>
+      <width>230</width>
+      <height>230</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true"/>
     </property>
     <property name="frameShape">
-     <enum>QFrame::Box</enum>
+     <enum>QFrame::NoFrame</enum>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/temploading.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="btnNext">
@@ -234,6 +246,85 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;</string>
      <string>    Next</string>
     </property>
    </widget>
+   <widget class="QLabel" name="lblTemp">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>90</y>
+      <width>51</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/icons/temp3.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>135</x>
+      <y>100</y>
+      <width>61</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/icons/heart3.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblBody">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>130</y>
+      <width>31</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/icons/stickman.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblRoom">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>190</y>
+      <width>31</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/icons/Room temp2.png</pixmap>
+    </property>
+   </widget>
    <zorder>lblSTemp</zorder>
    <zorder>lblSHeart</zorder>
    <zorder>lblNamePlaceholder</zorder>
@@ -245,6 +336,10 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;</string>
    <zorder>lblRoomTemp</zorder>
    <zorder>lblName</zorder>
    <zorder>btnNext</zorder>
+   <zorder>lblTemp</zorder>
+   <zorder>label_2</zorder>
+   <zorder>lblBody</zorder>
+   <zorder>lblRoom</zorder>
   </widget>
  </widget>
  <resources/>
