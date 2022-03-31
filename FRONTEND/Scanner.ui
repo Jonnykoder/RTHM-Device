@@ -278,6 +278,41 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QLabel" name="lblBody">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>130</y>
+      <width>31</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/icons/stickman.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblRoom">
+    <property name="geometry">
+     <rect>
+      <x>475</x>
+      <y>193</y>
+      <width>31</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/icons/Room temp2.png</pixmap>
+    </property>
+   </widget>
    <zorder>lblSTemp</zorder>
    <zorder>lblSHeart</zorder>
    <zorder>lblNamePlaceholder</zorder>
@@ -291,6 +326,8 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;</string>
    <zorder>btnNext</zorder>
    <zorder>lblTemp</zorder>
    <zorder>label_2</zorder>
+   <zorder>lblBody</zorder>
+   <zorder>lblRoom</zorder>
   </widget>
  </widget>
  <resources/>
