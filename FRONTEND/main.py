@@ -9,6 +9,13 @@ from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget ,QLab
 from PyQt5 import QtGui
 from PyQt5.QtGui import QPixmap
 
+#Sensor headers
+import max30102
+from smbus2 import SMBus
+from mlx90614 import MLX90614
+import hrcalc
+import time
+
 #####################################################################################
 """
 defining a class for the MainWindow
@@ -57,7 +64,6 @@ class NewUser(QDialog):
         # icon.addPixmap(QtGui.QPixmap("./images/icons/btnHome.png"))
         # button.setIcon(icon)
 
-
     def goHome(self):
         home = MainWindow()
         widget.addWidget(home)
@@ -73,14 +79,53 @@ class Scanner(QDialog):
         super(Scanner, self).__init__()
         loadUi("Scanner.ui", self)
         self.btnBack.clicked.connect(self.goBack)
-
-    
-
+        self.InitializeSensor()
+    def InitializeSensor(self):
+        m = max30102.MAX30102()
+        bus = SMBus(1)
+        sensor = MLX90614(bus, address=0x5A)
+        celcius = sensor.get_object_1();
+        faren = (celcius*1.8)+32
+        room = sensor.get_ambient()
+        roomTemp = round(room, 2)
+        bodyTemp = (round(celcius+5,2))
+        hr2 = 0
+        sp2 = 0
+        print("sensors loaded")
+        
+        while True:
+            red, ir = m.read_sequential()
+            hr,hrb,sp,spb = hrcalc.calc_hr_and_spo2(ir, red)
+            if(hrb == True and hr != -999 and hr < 105):
+                hr2 = int(hr)
+                self.lblHeartRate.setText(" "+str(hr2)+"bpm")
+                self.lblBodyTemp.setText(" "+str(bodyTemp)+"°C")
+                """print("--------------------")
+                print("Heart Rate : ",hr2)
+                print("Body Temp  : ",bodyTemp,"\N{DEGREE SIGN}C") """
+            if(spb == True and sp != -999 and sp < 100):
+                sp2 = int(sp)
+                self.lblOxygenLevel.setText(" "+str(sp2)+"%")
+                self.lblRoomTemp.setText(" "+str(roomTemp)+"°C")
+                """ print("SPO2       : ",sp2)
+                print ("Room Temp  :", roomTemp,u"\N{DEGREE SIGN}C")
+                print("--------------------") """
+                time.sleep(8)
+                break
+            else:
+                print("No vitals detected.")
+        print("result : \n Heart Rate: {} \n Oxygen Level: {} \n Room Temp: {}°C \n Body Temp: {}°C"
+              .format(
+                  hr2,
+                  sp2,
+                  roomTemp,
+                  bodyTemp)
+              )
+        
     def goBack(self):
         newuser = NewUser()  # <---Instantiate NewUser  Class
         widget.addWidget(newuser)
         widget.setCurrentIndex(widget.currentIndex() -1)  # <----Concat an index number to page 2.
-
 
 app = QApplication(sys.argv)
 mainwindow = MainWindow()
