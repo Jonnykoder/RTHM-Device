@@ -96,21 +96,21 @@ class Scanner(QDialog):
         while True:
             red, ir = m.read_sequential()
             hr,hrb,sp,spb = hrcalc.calc_hr_and_spo2(ir, red)
-            if(hrb == True and hr != -999 and hr < 105):
+            if(hrb == True and hr != -999):
                 hr2 = int(hr)
-                self.lblHeartRate.setText(" "+str(hr2)+"bpm")
-                self.lblBodyTemp.setText(" "+str(bodyTemp)+"°C")
+                self.lblHeartRate.setText(str(hr2))
+                self.lblBodyTemp.setText(str(bodyTemp)+"°")
                 """print("--------------------")
                 print("Heart Rate : ",hr2)
-                print("Body Temp  : ",bodyTemp,"\N{DEGREE SIGN}C") """
-            if(spb == True and sp != -999 and sp < 100):
+                print("Body Temp  : ",bodyTemp,"\N{DEGREE SIGN}") """
+            if(spb == True and sp != -999):
                 sp2 = int(sp)
-                self.lblOxygenLevel.setText(" "+str(sp2)+"%")
-                self.lblRoomTemp.setText(" "+str(roomTemp)+"°C")
+                self.lblOxygenLevel.setText(str(sp2))
+                self.lblRoomTemp.setText(str(roomTemp)+"°")
                 """ print("SPO2       : ",sp2)
                 print ("Room Temp  :", roomTemp,u"\N{DEGREE SIGN}C")
                 print("--------------------") """
-                time.sleep(8)
+                time.sleep(12)
                 break
             else:
                 print("No vitals detected.")
