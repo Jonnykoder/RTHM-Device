@@ -91,7 +91,9 @@ class Scanner(QDialog):
         bodyTemp = (round(celcius+5,2))
         hr2 = 0
         sp2 = 0
-        print("sensors loaded")
+        print("_____________________________________________________")
+        print("|\t \t STATUS: SENSORS LOADED    . \t     |")
+        print("_____________________________________________________")
         
         while True:
             red, ir = m.read_sequential()
@@ -113,7 +115,10 @@ class Scanner(QDialog):
                 time.sleep(12)
                 break
             else:
-                print("No vitals detected.")
+                print("_____________________________________________________")
+                print("|\t \t STATUS: No vitals detected. \t     |")
+                print("_____________________________________________________")
+        
         print("result : \n Heart Rate: {} \n Oxygen Level: {} \n Room Temp: {}°C \n Body Temp: {}°C"
               .format(
                   hr2,
@@ -122,10 +127,12 @@ class Scanner(QDialog):
                   bodyTemp)
               )
         
+        
     def goBack(self):
         newuser = NewUser()  # <---Instantiate NewUser  Class
         widget.addWidget(newuser)
         widget.setCurrentIndex(widget.currentIndex() -1)  # <----Concat an index number to page 2.
+        
 
 app = QApplication(sys.argv)
 mainwindow = MainWindow()
