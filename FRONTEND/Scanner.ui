@@ -438,9 +438,9 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;</string>
    <widget class="QLabel" name="lblScanning">
     <property name="geometry">
      <rect>
-      <x>240</x>
+      <x>230</x>
       <y>30</y>
-      <width>131</width>
+      <width>151</width>
       <height>51</height>
      </rect>
     </property>
@@ -455,7 +455,7 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;</string>
      <string notr="true">color: #594646;</string>
     </property>
     <property name="text">
-     <string>Scanning...</string>
+     <string>SCANNING...</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
