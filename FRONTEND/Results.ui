@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>Results</class>
+ <widget class="QWidget" name="Results">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>599</width>
+    <width>600</width>
     <height>345</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>RTHM-Scanner</string>
+   <string>RTHM-Results</string>
   </property>
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
@@ -505,6 +505,28 @@ border: none;</string>
       <normaloff>images/icons/btnBack.png</normaloff>images/icons/btnBack.png</iconset>
     </property>
    </widget>
+   <widget class="QPushButton" name="btnRescan">
+    <property name="geometry">
+     <rect>
+      <x>535</x>
+      <y>50</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">icon-size: 50px;
+background-color: transparent;
+border: none;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>images/icons/btnRescan.png</normaloff>images/icons/btnRescan.png</iconset>
+    </property>
+   </widget>
    <widget class="QPushButton" name="btnNext_2">
     <property name="geometry">
      <rect>
@@ -570,6 +592,7 @@ border: none;</string>
    <zorder>lblScanning</zorder>
    <zorder>label_3</zorder>
    <zorder>btnBack_2</zorder>
+   <zorder>btnRescan</zorder>
    <zorder>btnNext_2</zorder>
    <zorder>btnHome</zorder>
   </widget>

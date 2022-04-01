@@ -68,7 +68,7 @@ padding: 4px;
 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;</string>
     </property>
     <property name="text">
-     <string> Home</string>
+     <string>Home</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btnScan">
@@ -162,12 +162,35 @@ color:white;</string>
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/hello/hello.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="btnHome_2">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>5</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">icon-size: 50px;
+background-color: transparent;
+border: none;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>images/icons/home.png</normaloff>images/icons/home.png</iconset>
+    </property>
+   </widget>
    <zorder>imgHello</zorder>
    <zorder>label</zorder>
    <zorder>btnHome</zorder>
    <zorder>btnScan</zorder>
    <zorder>txtName</zorder>
    <zorder>label_2</zorder>
+   <zorder>btnHome_2</zorder>
   </widget>
  </widget>
  <resources>
