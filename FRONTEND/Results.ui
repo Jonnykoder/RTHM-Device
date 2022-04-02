@@ -74,15 +74,15 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;</string>
    <widget class="QLabel" name="lblHeartRate">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>130</y>
-      <width>61</width>
-      <height>31</height>
+      <x>90</x>
+      <y>120</y>
+      <width>115</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>26</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -100,15 +100,15 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;</string>
    <widget class="QLabel" name="lblOxygenLevel">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>200</y>
-      <width>61</width>
-      <height>31</height>
+      <x>90</x>
+      <y>183</y>
+      <width>115</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>26</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -126,15 +126,15 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;</string>
    <widget class="QLabel" name="lblBodyTemp">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>130</y>
-      <width>61</width>
-      <height>31</height>
+      <x>365</x>
+      <y>120</y>
+      <width>115</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>26</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -152,15 +152,15 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;</string>
    <widget class="QLabel" name="lblRoomTemp">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>200</y>
-      <width>61</width>
-      <height>31</height>
+      <x>365</x>
+      <y>183</y>
+      <width>115</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <pointsize>26</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -314,8 +314,8 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;</string>
    <widget class="QLabel" name="lblBody">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>120</y>
+      <x>480</x>
+      <y>125</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -333,7 +333,7 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;</string>
    <widget class="QLabel" name="lblRoom">
     <property name="geometry">
      <rect>
-      <x>460</x>
+      <x>480</x>
       <y>190</y>
       <width>41</width>
       <height>41</height>
