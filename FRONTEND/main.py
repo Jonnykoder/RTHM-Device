@@ -25,8 +25,8 @@ GPIO.setup(18, GPIO.IN)
 m = max30102.MAX30102()
 bus = SMBus(1)
 sensor = MLX90614(bus, address=0x5A)
-
-
+btnctr =0
+ctr = btnctr
 #####################################################################################
 #Run Sensors on Thread
 class Thread(QtCore.QThread):
@@ -125,36 +125,45 @@ class Scanner(QDialog):
         self.btnNext.setEnabled(False)
         self.btnNext_2.setEnabled(False)
         self.btnNext.setStyleSheet("background-color:gray; border:gray")
-
-    def update_Sensors(self, data):
+        print(ctr)
+    def update_Sensors(self, data ):
         hr, sp , hrb , spb ,rt,bt= data
         hr2 = int(hr)
         sp2 = int(sp)
+       
+        print("DEVICE STATUS: \t SCANNING SENSOR DATA...")
+        ctr = btnctr + 1
         
-        print("_____________________________________________________")
-        print("|\t \t STATUS: SENSORS LOADED    . \t     |")
-        print("_____________________________________________________")
-        btnctr = 0
+       
         if(hrb == True and spb ==True):
+            print("DEVICE STATUS: \t VITALS DETECTED...")
+            ctr = btnctr + 1
+            print(ctr)
+            
             if(sp != -999 and sp < 100):
                 self.lblBodyTemp.setText(str(bt)+"°")   
                 self.lblOxygenLevel.setText(str(sp2))
                 self.lblRoomTemp.setText(str(rt)+"°")
-                btnctr +=1
+                ctr = btnctr + 2
+                print (ctr)
             if(hr != -999 and hr<105):
                 self.lblHeartRate.setText(str(hr2))  # heart rate needs atleast 5-10 seconds and pressure to initialize
-                btnctr += 1
-                ctr = btnctr
-                if (ctr == 2):
+                ctr = btnctr + 3
+                print (ctr)
+               
+                if (ctr < 3):
+                    self.label.setText("")
+                if (ctr == 3):
+                    self.label.setText("Done Scanning")
                     self.btnNext.setEnabled(True)
                     self.btnNext_2.setEnabled(True)
                     self.btnNext.setStyleSheet("background-color:#FFE2CE; border:2px solid rgb(255,102,0);")
-                       
+                      
         else:
             
-            print("_____________________________________________________")
-            print("|\t \t STATUS: No vitals detected. \t     |")
-            print("_____________________________________________________")
+            ctr = btnctr + 1
+            print(ctr)
+            
        
        
     def goBack(self):
