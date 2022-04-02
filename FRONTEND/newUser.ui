@@ -29,7 +29,7 @@ background-color:qlineargradient(spread:pad, x1:0.005, y1:0, x2:1, y2:1, stop:0 
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>500</x>
+      <x>480</x>
       <y>320</y>
       <width>161</width>
       <height>21</height>
@@ -37,39 +37,6 @@ background-color:qlineargradient(spread:pad, x1:0.005, y1:0, x2:1, y2:1, stop:0 
     </property>
     <property name="text">
      <string>RTHM DEVICE V1.</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnHome">
-    <property name="geometry">
-     <rect>
-      <x>-30</x>
-      <y>-5</y>
-      <width>161</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Montserrat</family>
-      <pointsize>19</pointsize>
-      <weight>50</weight>
-      <italic>false</italic>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;GO BACK TO HOME&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: #3F3D56;
-background-color: #FFE2CE;
-border-radius: 3px;
-border:2px solid  rgb(255, 102, 0);
-padding: 4px;
-font: 19pt &quot;Montserrat&quot;;</string>
-    </property>
-    <property name="text">
-     <string>  Home</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btnScan">
@@ -161,11 +128,11 @@ color:white;</string>
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/hello/hello.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnHome_2">
+   <widget class="QPushButton" name="btnBack_2">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>10</y>
+      <x>80</x>
+      <y>290</y>
       <width>50</width>
       <height>50</height>
      </rect>
@@ -180,16 +147,49 @@ border: none;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>images/icons/home.png</normaloff>images/icons/home.png</iconset>
+      <normaloff>images/icons/btnBack.png</normaloff>images/icons/btnBack.png</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnBack">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>310</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>19</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;GO BACK TO HOME&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #3F3D56;
+background-color: #FFE2CE;
+border-radius: 3px;
+border:2px solid  rgb(255, 102, 0);
+padding: 4px;
+font: 19pt &quot;Montserrat&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Back </string>
     </property>
    </widget>
    <zorder>imgHello</zorder>
    <zorder>label</zorder>
-   <zorder>btnHome</zorder>
    <zorder>btnScan</zorder>
    <zorder>txtName</zorder>
    <zorder>label_2</zorder>
-   <zorder>btnHome_2</zorder>
+   <zorder>btnBack</zorder>
+   <zorder>btnBack_2</zorder>
   </widget>
  </widget>
  <resources>
