@@ -629,6 +629,45 @@ border: none;</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QProgressBar" name="loading">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>330</y>
+      <width>381</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QProgressBar::chunk{
+background-color: rgb(255, 102, 0);}
+
+border : 1px;</string>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+    <property name="textVisible">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>300</y>
+      <width>321</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <zorder>loading</zorder>
    <zorder>lblNamePlaceholder</zorder>
    <zorder>lblSTemp</zorder>
    <zorder>lblSHeart</zorder>
@@ -654,6 +693,7 @@ border: none;</string>
    <zorder>btnHome_2</zorder>
    <zorder>lblCelcius_2</zorder>
    <zorder>lblCelcius_3</zorder>
+   <zorder>label</zorder>
   </widget>
  </widget>
  <resources/>
