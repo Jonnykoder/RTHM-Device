@@ -165,7 +165,7 @@ font: 19pt &quot;Montserrat&quot;;
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="btnSend_2">
     <property name="geometry">
      <rect>
       <x>440</x>
@@ -184,7 +184,7 @@ border: none;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>images/icons/next.png</normaloff>images/icons/next.png</iconset>
+      <normaloff>images/icons/send.png</normaloff>images/icons/send.png</iconset>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -300,7 +300,7 @@ color: black;</string>
    <zorder>lblName</zorder>
    <zorder>btnSend</zorder>
    <zorder>lblInput</zorder>
-   <zorder>pushButton_2</zorder>
+   <zorder>btnSend_2</zorder>
    <zorder>label_3</zorder>
    <zorder>lblLine1</zorder>
    <zorder>lblNumber</zorder>
