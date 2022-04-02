@@ -79,7 +79,7 @@ font: 19pt &quot;Montserrat&quot;;</string>
      <string notr="true">color: #594646;</string>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;000&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>-</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -105,7 +105,7 @@ font: 19pt &quot;Montserrat&quot;;</string>
      <string notr="true">color: #594646;</string>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;000&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>-</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -131,7 +131,7 @@ font: 19pt &quot;Montserrat&quot;;</string>
      <string notr="true">color: #594646;</string>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>-</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -157,7 +157,7 @@ font: 19pt &quot;Montserrat&quot;;</string>
      <string notr="true">color: #594646;</string>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;00&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>-</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -629,33 +629,11 @@ border: none;</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QProgressBar" name="loading">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>330</y>
-      <width>381</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QProgressBar::chunk{
-background-color: rgb(255, 102, 0);}
-
-border : 1px;</string>
-    </property>
-    <property name="value">
-     <number>0</number>
-    </property>
-    <property name="textVisible">
-     <bool>false</bool>
-    </property>
-   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>140</x>
-      <y>300</y>
+      <y>310</y>
       <width>321</width>
       <height>31</height>
      </rect>
@@ -667,7 +645,6 @@ border : 1px;</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <zorder>loading</zorder>
    <zorder>lblNamePlaceholder</zorder>
    <zorder>lblSTemp</zorder>
    <zorder>lblSHeart</zorder>
