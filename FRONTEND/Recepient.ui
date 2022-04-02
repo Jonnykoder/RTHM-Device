@@ -144,8 +144,8 @@ font: 19pt &quot;Montserrat&quot;;
    <widget class="QLabel" name="lblInput">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>110</y>
+      <x>110</x>
+      <y>80</y>
       <width>331</width>
       <height>51</height>
      </rect>
@@ -234,8 +234,8 @@ border: none;</string>
    <widget class="QLabel" name="lblLine1">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>220</y>
+      <x>110</x>
+      <y>190</y>
       <width>331</width>
       <height>5</height>
      </rect>
@@ -253,8 +253,8 @@ border: none;</string>
    <widget class="QLineEdit" name="txtNumber">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>160</y>
+      <x>210</x>
+      <y>130</y>
       <width>231</width>
       <height>71</height>
      </rect>
@@ -271,14 +271,14 @@ border-radius:16px;
 color: black;</string>
     </property>
     <property name="text">
-     <string/>
+     <string>9155006790</string>
     </property>
    </widget>
    <widget class="QLabel" name="lblNumber">
     <property name="geometry">
      <rect>
       <x>120</x>
-      <y>160</y>
+      <y>130</y>
       <width>101</width>
       <height>71</height>
      </rect>
@@ -294,6 +294,23 @@ color: black;</string>
      <string>+639</string>
     </property>
    </widget>
+   <widget class="QLabel" name="imgHello_2">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>90</y>
+      <width>271</width>
+      <height>241</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/sms.png</pixmap>
+    </property>
+   </widget>
+   <zorder>imgHello_2</zorder>
    <zorder>lblNamePlaceholder</zorder>
    <zorder>label</zorder>
    <zorder>btnBack</zorder>
