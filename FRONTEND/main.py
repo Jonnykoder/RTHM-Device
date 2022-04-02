@@ -54,31 +54,38 @@ class NewUser(QDialog):
         super(NewUser, self).__init__()
         loadUi("newUser.ui", self)
         self.btnHome.clicked.connect(self.goHome)     # gohome button
-        self.btnScan.clicked.connect(self.gotoScanner)     #goto Scanner function
-
+        
         # load images from images folder
         self.im = QPixmap("./images/hello.png")
         self.imgHello.setPixmap(self.im)
-        # button = QtGui.btnHome(self)
-        # icon = QtGui.QIcon()
-        # icon.addPixmap(QtGui.QPixmap("./images/icons/btnHome.png"))
-        # button.setIcon(icon)
-
+        
+        self.btnScan.clicked.connect(self.gotoScanner)     #goto Scanner function
     def goHome(self):
         home = MainWindow()
         widget.addWidget(home)
         widget.setCurrentIndex(widget.currentIndex()-1)
 
     def gotoScanner(self):
-        scan = Scanner()
-        widget.addWidget(scan)
+        
+        self.thread={} #Initialize a thread
+        #self.thread[1].start()
+        self.scan = Scanner()
+    
+        widget.addWidget(self.scan)
         widget.setCurrentIndex(widget.currentIndex() + 1)
-
+        newuser = self.txtName.text()
+        #assign this name to the next windows
+        self.scan.lblName.setText(newuser)
+        
+        
 class Scanner(QDialog):
     def __init__(self):
         super(Scanner, self).__init__()
         loadUi("Scanner.ui", self)
+        QtGui.QGuiApplication.processEvents()
         self.btnBack.clicked.connect(self.goBack)
+        
+       
         self.InitializeSensor()
     def InitializeSensor(self):
         m = max30102.MAX30102()
@@ -105,6 +112,7 @@ class Scanner(QDialog):
                 """print("--------------------")
                 print("Heart Rate : ",hr2)
                 print("Body Temp  : ",bodyTemp,"\N{DEGREE SIGN}") """
+                QtGui.QGuiApplication.processEvents()
             if(spb == True and sp != -999):
                 sp2 = int(sp)
                 self.lblOxygenLevel.setText(str(sp2))
@@ -114,6 +122,7 @@ class Scanner(QDialog):
                 print("--------------------") """
                 time.sleep(12)
                 break
+                QtGui.QGuiApplication.processEvents()
             else:
                 print("_____________________________________________________")
                 print("|\t \t STATUS: No vitals detected. \t     |")
@@ -126,7 +135,8 @@ class Scanner(QDialog):
                   roomTemp,
                   bodyTemp)
               )
-        
+        return False
+        QtGui.QGuiApplication.processEvents()
         
     def goBack(self):
         newuser = NewUser()  # <---Instantiate NewUser  Class
