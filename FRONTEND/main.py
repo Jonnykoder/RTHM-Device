@@ -16,12 +16,12 @@ from smbus2 import SMBus
 from mlx90614 import MLX90614
 import hrcalc
 import time
-
+from sim800l import SIM800L
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 GPIO.setup(18, GPIO.IN)
-
+sim800l=SIM800L('/dev/serial0')
 m = max30102.MAX30102()
 bus = SMBus(1)
 sensor = MLX90614(bus, address=0x5A)
@@ -88,17 +88,14 @@ class NewUser(QDialog):
     def __init__(self):
         super(NewUser, self).__init__()
         loadUi("newUser.ui", self)
-        self.btnHome.clicked.connect(self.goHome)     # gohome button
+       
         
         # load images from images folder
         self.im = QPixmap("./images/hello.png")
         self.imgHello.setPixmap(self.im)
         
         self.btnScan.clicked.connect(self.gotoScanner)     #goto Scanner function
-    def goHome(self):
-        home = MainWindow()
-        widget.addWidget(home)
-        widget.setCurrentIndex(widget.currentIndex()-1)
+  
 
     def gotoScanner(self):
         
@@ -123,6 +120,7 @@ class Scanner(QDialog):
         
         #set this button to disable when data is not yet scanned
         self.btnNext.setEnabled(False)
+        self.btnNext.clicked.connect(self.sendData)
         self.btnNext_2.setEnabled(False)
         self.btnNext.setStyleSheet("background-color:gray; border:gray")
         print(ctr)
@@ -177,20 +175,33 @@ class Scanner(QDialog):
         self.btnNext.setEnabled(False)
         self.btnNext_2.setEnabled(False)
         self.btnNext.setStyleSheet("background-color:gray; border:gray")
+        self.label.setText("")
         #stop scanner thread after going back
         thread = Thread(self)
         thread.data_sensors.connect(self.update_Sensors)
         thread.quit()
         print("Thread stopped...")
-        
+      
     def sendData(self):
-        self.send = SendSms()     
-        widget.addWidget(self.send)
+        self.sendsms = SendSms()     
+        widget.addWidget(self.sendsms)
         widget.setCurrentIndex(widget.currentIndex() + 1)
 class SendSms(QDialog):
-    def __init__(self):
-        super(sms, self).__init__()
+    def __init__(self):   
+        super(SendSms, self).__init__()
         loadUi("Recepient.ui", self)
+        self.btnBack.clicked.connect(self.goBack)
+        self.btnSend.clicked.connect(self.sendSms)
+    def goBack(self):
+        scan = Scanner()  # <---Instantiate NewUser  Class
+        widget.addWidget(scan)
+        widget.setCurrentIndex(widget.currentIndex() -1)  # <----Concat an index number to page 2.
+        
+    def sendSms(self):
+        number = self.txtNumber.text()
+        if(number == ""):
+            print("Number cannot be empty.")
+        
 app = QApplication(sys.argv)
 mainwindow = MainWindow()
 widget = QStackedWidget()
