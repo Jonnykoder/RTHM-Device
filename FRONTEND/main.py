@@ -5,7 +5,7 @@
 import sys
 from PyQt5.uic import loadUi
 from PyQt5 import  QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget ,QLabel,QLineEdit,QGridLayout,QDesktopWidget
+from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget ,QLabel,QLineEdit,QGridLayout,QDesktopWidget,QMessageBox
 from PyQt5 import QtGui
 from PyQt5.QtGui import QPixmap
 from PyQt5 import QtCore
@@ -99,6 +99,11 @@ class NewUser(QDialog):
 
     def gotoScanner(self):
         
+        msg = QMessageBox()
+        msg.setWindowTitle("notice")
+        msg.setText("you will proceed to the scanning window. \nPlease put your finger on the scanner.")
+        msg.setIcon(QMessageBox.Information)
+        x=msg.exec()
         
         self.scan = Scanner()     
         widget.addWidget(self.scan)
@@ -165,23 +170,35 @@ class Scanner(QDialog):
        
        
     def goBack(self):
-        newuser = NewUser()  # <---Instantiate NewUser  Class
-        widget.addWidget(newuser)
-        widget.setCurrentIndex(widget.currentIndex() -1)  # <----Concat an index number to page 2.
-        self.lblHeartRate.setText("-")
-        self.lblRoomTemp.setText("-")
-        self.lblOxygenLevel.setText("-")
-        self.lblBodyTemp.setText("-")
-        self.btnNext.setEnabled(False)
-        self.btnNext_2.setEnabled(False)
-        self.btnNext.setStyleSheet("background-color:gray; border:gray")
-        self.label.setText("")
-        #stop scanner thread after going back
-        thread = Thread(self)
-        thread.data_sensors.connect(self.update_Sensors)
-        thread.quit()
-        print("Thread stopped...")
-      
+        msg = QMessageBox()
+        msg.setWindowTitle("Warning")
+        msg.setText("This action will cancel the scanning proccess. \nDo you want still want to go back?.")
+        msg.setIcon(QMessageBox.Warning)
+        msg.setStandardButtons(QMessageBox.Cancel|QMessageBox.Ok)
+        msg.setDefaultButton(QMessageBox.Cancel)
+        msg.buttonClicked.connect(self.popup_button)
+        x=msg.exec()
+        
+    def popup_button(self, i):
+        val = i.text()
+        if(val == "OK"):
+            newuser = NewUser()  # <---Instantiate NewUser  Class
+            widget.addWidget(newuser)
+            widget.setCurrentIndex(widget.currentIndex() -1)  # <----Concat an index number to page 2.
+            self.lblHeartRate.setText("-")
+            self.lblRoomTemp.setText("-")
+            self.lblOxygenLevel.setText("-")
+            self.lblBodyTemp.setText("-")
+            self.btnNext.setEnabled(False)
+            self.btnNext_2.setEnabled(False)
+            self.btnNext.setStyleSheet("background-color:gray; border:gray")
+            self.label.setText("")
+            #stop scanner thread after going back
+            thread = Thread(self)
+            thread.data_sensors.connect(self.update_Sensors)
+            thread.quit()
+            print("Thread stopped...")
+        
     def sendData(self):
         self.sendsms = SendSms()     
         widget.addWidget(self.sendsms)
@@ -200,7 +217,28 @@ class SendSms(QDialog):
     def sendSms(self):
         number = self.txtNumber.text()
         if(number == ""):
-            print("Number cannot be empty.")
+            msg = QMessageBox()
+            msg.setWindowTitle("Missing Value")
+            msg.setText("Cannot send to empty phone number .")
+            msg.setIcon(QMessageBox.Warning)
+            x=msg.exec()
+            
+        else:
+            pref = self.lblNumber.text()
+            number = self.txtNumber.text()
+            msg = QMessageBox()
+            msg.setWindowTitle("Send Data")
+            msg.setText("Do you want to send data \n to {}{} phone number?.".format(pref,number))
+            msg.setIcon(QMessageBox.Question)
+            msg.setStandardButtons(QMessageBox.Cancel|QMessageBox.Ok)
+            msg.setDefaultButton(QMessageBox.Cancel)
+            msg.buttonClicked.connect(self.popup_button)
+            x=msg.exec()
+    def popup_button(self, i):
+        val = i.text()
+        if(val == "OK"):
+            print("Message sent")
+        
         
 app = QApplication(sys.argv)
 mainwindow = MainWindow()
