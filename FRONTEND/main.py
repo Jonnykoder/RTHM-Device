@@ -5,11 +5,11 @@
 import sys
 from PyQt5.uic import loadUi
 from PyQt5 import  QtWidgets
-from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget ,QLabel,QLineEdit
+from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget ,QLabel,QLineEdit,QGridLayout,QDesktopWidget
 from PyQt5 import QtGui
 from PyQt5.QtGui import QPixmap
 from PyQt5 import QtCore
-
+import PyQt5
 #Sensor headers
 import max30102
 from smbus2 import SMBus
@@ -56,15 +56,21 @@ defining a class for the MainWindow
 class MainWindow(QDialog):
     def __init__(self):              #constructor   <--- this function will load the ui within the block
         super(MainWindow, self).__init__()
+        self.center()
         loadUi("windowStart.ui", self)
-
+       
         #load images from images folder
         self.im = QPixmap("./images/startScreenLogo.png")
         self.imgStartScreenLogo.setPixmap(self.im)
 
         #add event when btnStart is pressed
         self.btnStart.clicked.connect(self.gotoNewUser)   #<----Load gotoNewUserfunction
-
+    def center(self):
+        print("center dapat")
+        screen = QtGui.QGuiApplication.screenAt(QtGui.QCursor().pos())
+        fg = self.frameGeometry()
+        fg.moveCenter(screen.geometry().center())
+        self.move(fg.topLeft())
     def gotoNewUser(self):
         newuser = NewUser()   #<---Instantiate NewUser  Class
         widget.addWidget(newuser)
@@ -118,7 +124,7 @@ class Scanner(QDialog):
         #set this button to disable when data is not yet scanned
         self.btnNext.setEnabled(False)
         self.btnNext_2.setEnabled(False)
-        
+        self.btnNext.setStyleSheet("background-color:gray; border:gray")
 
     def update_Sensors(self, data):
         hr, sp , hrb , spb ,rt,bt= data
@@ -142,51 +148,15 @@ class Scanner(QDialog):
                 if (ctr == 2):
                     self.btnNext.setEnabled(True)
                     self.btnNext_2.setEnabled(True)
-                    self.btnNext.setStyleSheet("background-color:#FFE2CE;")
-                               
+                    self.btnNext.setStyleSheet("background-color:#FFE2CE; border:2px solid rgb(255,102,0);")
+                       
         else:
             
             print("_____________________________________________________")
             print("|\t \t STATUS: No vitals detected. \t     |")
             print("_____________________________________________________")
        
-        """
-        while True:
-            red, ir = m.read_sequential()
-            hr,hrb,sp,spb = hrcalc.calc_hr_and_spo2(ir, red)
-            if(hrb == True and hr != -999):
-                hr2 = int(hr)
-                self.lblHeartRate.setText(str(hr2))
-                self.lblBodyTemp.setText(str(bodyTemp)+"°")
-                print("--------------------")
-                print("Heart Rate : ",hr2)
-                print("Body Temp  : ",bodyTemp,"\N{DEGREE SIGN}") 
-                QtGui.QGuiApplication.processEvents()
-            if(spb == True and sp != -999):
-                sp2 = int(sp)
-                self.lblOxygenLevel.setText(str(sp2))
-                self.lblRoomTemp.setText(str(roomTemp)+"°")
-                print("SPO2       : ",sp2)
-                print ("Room Temp  :", roomTemp,u"\N{DEGREE SIGN}C")
-                print("--------------------") 
-                time.sleep(12)
-                break
-              
-            else:
-                print("_____________________________________________________")
-                print("|\t \t STATUS: No vitals detected. \t     |")
-                print("_____________________________________________________")
-        
-        print("result : \n Heart Rate: {} \n Oxygen Level: {} \n Room Temp: {}°C \n Body Temp: {}°C"
-              .format(
-                  hr2,
-                  sp2,
-                  roomTemp,
-                  bodyTemp)
-              )
-        return False
-        QtGui.QGuiApplication.processEvents()
-        """
+       
     def goBack(self):
         newuser = NewUser()  # <---Instantiate NewUser  Class
         widget.addWidget(newuser)
@@ -197,7 +167,7 @@ class Scanner(QDialog):
         self.lblBodyTemp.setText("-")
         self.btnNext.setEnabled(False)
         self.btnNext_2.setEnabled(False)
-        self.btnNext.setStyleSheet("background-color:gray")
+        self.btnNext.setStyleSheet("background-color:gray; border:gray")
         #stop scanner thread after going back
         thread = Thread(self)
         thread.data_sensors.connect(self.update_Sensors)
@@ -218,6 +188,7 @@ widget = QStackedWidget()
 widget.addWidget(mainwindow)
 widget.setFixedHeight(345)
 widget.setFixedWidth(600)
+
 widget.show()
 
 try:
