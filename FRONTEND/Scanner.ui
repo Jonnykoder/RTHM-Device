@@ -366,8 +366,8 @@ font-weight: bold;</string>
    <widget class="QLabel" name="lblCelcius">
     <property name="geometry">
      <rect>
-      <x>750</x>
-      <y>140</y>
+      <x>780</x>
+      <y>150</y>
       <width>100</width>
       <height>35</height>
      </rect>
@@ -383,11 +383,11 @@ font-weight: bold;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color: #594646;
-font: 20px &quot;Montserrat&quot;;
+font: 26px &quot;Montserrat&quot;;
 font-weight: bold;</string>
     </property>
     <property name="text">
-     <string>Celcius</string>
+     <string>C</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -669,6 +669,36 @@ border:none;</string>
       <normaloff>images/icons/i.png</normaloff>images/icons/i.png</iconset>
     </property>
    </widget>
+   <widget class="QLabel" name="lblCelcius_4">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>300</y>
+      <width>100</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #594646;
+font: 26px &quot;Montserrat&quot;;
+font-weight: bold;</string>
+    </property>
+    <property name="text">
+     <string>C</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
    <zorder>btnNext</zorder>
    <zorder>lblNamePlaceholder</zorder>
    <zorder>lblSTemp</zorder>
@@ -695,6 +725,7 @@ border:none;</string>
    <zorder>btnInfo</zorder>
    <zorder>btnInfo_2</zorder>
    <zorder>btnNext_2</zorder>
+   <zorder>lblCelcius_4</zorder>
   </widget>
  </widget>
  <resources/>
