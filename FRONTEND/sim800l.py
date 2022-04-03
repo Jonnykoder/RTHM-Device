@@ -27,6 +27,7 @@ class SIM800L:
         self.savbuf = None
 
     def setup(self):
+        self.command('AT\n') 
         self.command('ATE0\n')         # command echo off
         self.command('AT+CLIP=1\n')    # caller line identification
         self.command('AT+CMGF=1\n')    # plain text SMS

@@ -27,10 +27,37 @@ bus = SMBus(1)
 sensor = MLX90614(bus, address=0x5A)
 btnctr =0
 ctr = btnctr
+
+from sim800l import SIM800L
+sim800l=SIM800L('/dev/serial0')
+name="John"
+hr = str(92)
+sp02 = str(120)
+roomTemp = str(35.2)
+bodyTemp = str(34.2)
+deg = "C"
+date ="04-18-2023"
+time = "05:30 PM" 
+userData = ("--------------------------------------\nDate: {} \nTime: {} \n--------------------------------------\nName: {} \nHeart Rate: {} Bpm\nOxygen Saturation: {}% \nRoom Temp:{} C \nBody Temperature:{} C \n--------------------------------------\n\n RTHM DEVICE V1.03.22 BETA"
+            .format(
+                date,
+                time,
+                name,
+                hr,
+                sp02,
+                roomTemp,
+                bodyTemp)
+            )
+print(userData )
+sms=("test again")
+num = '9155006780' #this will be from the user input
+pref = '63'
+cp = pref+num
 #####################################################################################
 #Run Sensors on Thread
 class Thread(QtCore.QThread):
     data_sensors = QtCore.pyqtSignal(tuple)
+    userName = QtCore.pyqtSignal(tuple)
     def run(self):
         while True:
            
@@ -41,9 +68,6 @@ class Thread(QtCore.QThread):
             bt = (round(celcius+5,2)) #bodyTemp
             red, ir = m.read_sequential()
             hr,hrb,sp,spb = hrcalc.calc_hr_and_spo2(ir, red)
-            
-            
-            
             self.data_sensors.emit((hr,sp,hrb,spb,rt,bt))
 
 """
@@ -66,7 +90,7 @@ class MainWindow(QDialog):
         #add event when btnStart is pressed
         self.btnStart.clicked.connect(self.gotoNewUser)   #<----Load gotoNewUserfunction
     def center(self):
-        print("center dapat")
+        
         screen = QtGui.QGuiApplication.screenAt(QtGui.QCursor().pos())
         fg = self.frameGeometry()
         fg.moveCenter(screen.geometry().center())
@@ -88,8 +112,8 @@ class NewUser(QDialog):
     def __init__(self):
         super(NewUser, self).__init__()
         loadUi("newUser.ui", self)
-       
-        
+        self.btnBack.clicked.connect(self.goBack)
+     
         # load images from images folder
         self.im = QPixmap("./images/hello.png")
         self.imgHello.setPixmap(self.im)
@@ -98,21 +122,34 @@ class NewUser(QDialog):
   
 
     def gotoScanner(self):
-        
-        msg = QMessageBox()
-        msg.setWindowTitle("notice")
-        msg.setText("you will proceed to the scanning window. \nPlease put your finger on the scanner.")
-        msg.setIcon(QMessageBox.Information)
-        x=msg.exec()
-        
-        self.scan = Scanner()     
-        widget.addWidget(self.scan)
-        widget.setCurrentIndex(widget.currentIndex() + 1)
-        newuser = self.txtName.text()
-        #assign this name to the next windows
-        self.scan.lblName.setText(newuser)
-        
-        
+    
+        newuser = (self.txtName.text()).lstrip()
+      
+        if (newuser ==""):
+            msg = QMessageBox()
+            msg.setWindowTitle("Error")
+            msg.setText("Please enter a name to proceed \n with scanning.")
+            msg.setIcon(QMessageBox.Warning)
+            x=msg.exec()
+        else:
+            msg = QMessageBox()
+            msg.setWindowTitle("notice")
+            msg.setText("you will proceed to the scanning window. \nPlease put your finger on the scanner.")
+            msg.setIcon(QMessageBox.Information)
+            x=msg.exec()
+            
+            self.scan = Scanner()
+            self.recep = SendSms()
+            widget.addWidget(self.scan)
+            widget.setCurrentIndex(widget.currentIndex() + 1)
+            
+            #assign this name to the next windows
+            self.scan.lblName.setText(newuser)
+            self.recep.lblName.setText(newuser)
+    def goBack(self):
+        self.mainwin = MainWindow()     
+        widget.addWidget(self.mainwin)
+        widget.setCurrentIndex(widget.currentIndex() -1)
 class Scanner(QDialog):
     def __init__(self):
         super(Scanner, self).__init__()
@@ -122,13 +159,13 @@ class Scanner(QDialog):
         thread = Thread(self)
         thread.data_sensors.connect(self.update_Sensors)
         thread.start()
-        
+        self.lblScanning.setText("Scanning..")
         #set this button to disable when data is not yet scanned
         self.btnNext.setEnabled(False)
         self.btnNext.clicked.connect(self.sendData)
         self.btnNext_2.setEnabled(False)
         self.btnNext.setStyleSheet("background-color:gray; border:gray")
-        print(ctr)
+        #print(ctr)
     def update_Sensors(self, data ):
         hr, sp , hrb , spb ,rt,bt= data
         hr2 = int(hr)
@@ -141,23 +178,23 @@ class Scanner(QDialog):
         if(hrb == True and spb ==True):
             print("DEVICE STATUS: \t VITALS DETECTED...")
             ctr = btnctr + 1
-            print(ctr)
+            #print(ctr)
             
             if(sp != -999 and sp < 100):
                 self.lblBodyTemp.setText(str(bt)+"°")   
                 self.lblOxygenLevel.setText(str(sp2))
                 self.lblRoomTemp.setText(str(rt)+"°")
                 ctr = btnctr + 2
-                print (ctr)
+                #print (ctr)
             if(hr != -999 and hr<105):
                 self.lblHeartRate.setText(str(hr2))  # heart rate needs atleast 5-10 seconds and pressure to initialize
                 ctr = btnctr + 3
-                print (ctr)
+                #print (ctr)
                
                 if (ctr < 3):
                     self.label.setText("")
                 if (ctr == 3):
-                    self.label.setText("Done Scanning")
+                    self.lblScanning.setText("Done Scanning")
                     self.btnNext.setEnabled(True)
                     self.btnNext_2.setEnabled(True)
                     self.btnNext.setStyleSheet("background-color:#FFE2CE; border:2px solid rgb(255,102,0);")
@@ -165,7 +202,7 @@ class Scanner(QDialog):
         else:
             
             ctr = btnctr + 1
-            print(ctr)
+            #print(ctr)
             
        
        
@@ -185,6 +222,7 @@ class Scanner(QDialog):
             newuser = NewUser()  # <---Instantiate NewUser  Class
             widget.addWidget(newuser)
             widget.setCurrentIndex(widget.currentIndex() -1)  # <----Concat an index number to page 2.
+            self.lblScanning.setText("Scanning..")
             self.lblHeartRate.setText("-")
             self.lblRoomTemp.setText("-")
             self.lblOxygenLevel.setText("-")
@@ -208,44 +246,79 @@ class SendSms(QDialog):
         super(SendSms, self).__init__()
         loadUi("Recepient.ui", self)
         self.btnBack.clicked.connect(self.goBack)
-        self.btnSend.clicked.connect(self.sendSms)
+        self.btnSend.clicked.connect(self.validationSend)
+        self.txtNumber.mousePressEvent = (self.mousePressed)
+        
+    def mousePressed(self, event):
+        self.txtNumber.clear()
     def goBack(self):
         scan = Scanner()  # <---Instantiate NewUser  Class
         widget.addWidget(scan)
         widget.setCurrentIndex(widget.currentIndex() -1)  # <----Concat an index number to page 2.
-        
-    def sendSms(self):
-        number = self.txtNumber.text()
-        if(number == ""):
+        inp = (self.txtNumber.text()).lstrip()
+        if(inp == ""):
+            self.txtNumber.setText("9123456789")
+    def validationSend(self):
+        num = (self.txtNumber.text()).lstrip()
+        if(num == "9123456789"):
             msg = QMessageBox()
-            msg.setWindowTitle("Missing Value")
-            msg.setText("Cannot send to empty phone number .")
+            msg.setWindowTitle("Error")
+            msg.setText("The number must not be same as the placeholder!")
             msg.setIcon(QMessageBox.Warning)
             x=msg.exec()
-            
         else:
-            pref = self.lblNumber.text()
-            number = self.txtNumber.text()
-            msg = QMessageBox()
-            msg.setWindowTitle("Send Data")
-            msg.setText("Do you want to send data \n to {}{} phone number?.".format(pref,number))
-            msg.setIcon(QMessageBox.Question)
-            msg.setStandardButtons(QMessageBox.Cancel|QMessageBox.Ok)
-            msg.setDefaultButton(QMessageBox.Cancel)
-            msg.buttonClicked.connect(self.popup_button)
-            x=msg.exec()
+            if(num == ""):
+                msg = QMessageBox()
+                msg.setWindowTitle("Missing Value")
+                msg.setText("Cannot send to empty phone number .")
+                msg.setIcon(QMessageBox.Warning)
+                x=msg.exec()
+                
+            else:
+                nLen = len(num)
+                f_dig = num[0]
+                if (f_dig =="9" and num.isdigit() ):
+                    if (nLen != 10):
+                        msg = QMessageBox()
+                        msg.setWindowTitle("Incomplete value")
+                        msg.setText("The phone number must contain 10 digits and starts with 9.")
+                        msg.setIcon(QMessageBox.Warning)
+                        x=msg.exec()
+                    else:
+                        #print("first digit"+f_dig)
+                        pref = self.lblNumber.text()
+                        number = self.txtNumber.text()
+                        msg = QMessageBox()
+                        msg.setWindowTitle("Send Data")
+                        msg.setText("Do you want to send data \n to {}{} phone number?.".format(pref,number))
+                        msg.setIcon(QMessageBox.Question)
+                        msg.setStandardButtons(QMessageBox.Cancel|QMessageBox.Ok)
+                        msg.setDefaultButton(QMessageBox.Cancel)
+                        msg.buttonClicked.connect(self.popup_button)
+                        x=msg.exec()
+                else:
+                    msg = QMessageBox()
+                    msg.setWindowTitle("Input error")
+                    msg.setText("Please enter a correct value .. \n example:9123456789")
+                    msg.setIcon(QMessageBox.Warning)
+                    x=msg.exec()
     def popup_button(self, i):
         val = i.text()
         if(val == "OK"):
-            print("Message sent")
+            sim800l.send_sms(cp,userData)
+            msg = QMessageBox()
+            msg.setWindowTitle("Success!")
+            msg.setText("The data has been sent .")
+            msg.setIcon(QMessageBox.Information)
+            x=msg.exec()
         
         
 app = QApplication(sys.argv)
 mainwindow = MainWindow()
 widget = QStackedWidget()
 widget.addWidget(mainwindow)
-widget.setFixedHeight(345)
-widget.setFixedWidth(600)
+widget.setFixedHeight(564)
+widget.setFixedWidth(1024)
 
 widget.show()
 
