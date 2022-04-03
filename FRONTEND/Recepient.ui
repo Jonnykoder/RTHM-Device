@@ -273,7 +273,7 @@ font: 64pX &quot;Montserrat&quot;;
 font-weight: bold;</string>
     </property>
     <property name="text">
-     <string>9155006790</string>
+     <string>9123456789</string>
     </property>
    </widget>
    <widget class="QLabel" name="lblNumber">
