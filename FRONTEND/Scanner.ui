@@ -456,9 +456,9 @@ font-weight: bold;</string>
    <widget class="QLabel" name="lblScanning">
     <property name="geometry">
      <rect>
-      <x>335</x>
+      <x>285</x>
       <y>26</y>
-      <width>334</width>
+      <width>451</width>
       <height>81</height>
      </rect>
     </property>
@@ -473,7 +473,7 @@ font-weight: bold;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color: #594646;
-font: 32px &quot;Montserrat&quot;;
+font: 48px &quot;Montserrat&quot;;
 font-weight: bold;</string>
     </property>
     <property name="text">
