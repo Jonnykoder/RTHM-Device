@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>599</width>
-    <height>344</height>
+    <width>1024</width>
+    <height>534</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,8 +18,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>600</width>
-     <height>345</height>
+     <width>1024</width>
+     <height>534</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -30,18 +30,18 @@ background-color:qlineargradient(spread:pad, x1:0.005, y1:0, x2:1, y2:1, stop:0 
     <property name="geometry">
      <rect>
       <x>-10</x>
-      <y>310</y>
-      <width>121</width>
-      <height>41</height>
+      <y>470</y>
+      <width>222</width>
+      <height>67</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Montserrat</family>
-      <pointsize>19</pointsize>
-      <weight>50</weight>
+      <pointsize>38</pointsize>
+      <weight>75</weight>
       <italic>false</italic>
-      <bold>false</bold>
+      <bold>true</bold>
      </font>
     </property>
     <property name="toolTip">
@@ -53,7 +53,8 @@ background-color: #FFE2CE;
 border-radius: 3px;
 border:2px solid  rgb(255, 102, 0);
 padding: 4px;
-font: 19pt &quot;Montserrat&quot;;</string>
+font: 38pt &quot;Montserrat&quot;;
+font-weight: bold;</string>
     </property>
     <property name="text">
      <string>Back </string>
@@ -62,24 +63,28 @@ font: 19pt &quot;Montserrat&quot;;</string>
    <widget class="QLabel" name="lblHeartRate">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>130</y>
-      <width>111</width>
-      <height>51</height>
+      <x>130</x>
+      <y>160</y>
+      <width>221</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <family>Montserrat</family>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
+      <italic>false</italic>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: #594646;</string>
+     <string notr="true">color: #594646;
+font: 84px &quot;Montserrat&quot;;
+font-weight: bold;</string>
     </property>
     <property name="text">
-     <string>-</string>
+     <string>36.6</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -88,24 +93,28 @@ font: 19pt &quot;Montserrat&quot;;</string>
    <widget class="QLabel" name="lblOxygenLevel">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>200</y>
-      <width>91</width>
-      <height>61</height>
+      <x>130</x>
+      <y>300</y>
+      <width>221</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <family>Montserrat</family>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
+      <italic>false</italic>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: #594646;</string>
+     <string notr="true">color: #594646;
+font: 84px &quot;Montserrat&quot;;
+font-weight: bold;</string>
     </property>
     <property name="text">
-     <string>-</string>
+     <string>36.6</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -114,24 +123,28 @@ font: 19pt &quot;Montserrat&quot;;</string>
    <widget class="QLabel" name="lblBodyTemp">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>130</y>
-      <width>71</width>
-      <height>51</height>
+      <x>610</x>
+      <y>160</y>
+      <width>221</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <family>Montserrat</family>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
+      <italic>false</italic>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: #594646;</string>
+     <string notr="true">color: #594646;
+font: 84px &quot;Montserrat&quot;;
+font-weight: bold;</string>
     </property>
     <property name="text">
-     <string>-</string>
+     <string>36.6</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -140,24 +153,28 @@ font: 19pt &quot;Montserrat&quot;;</string>
    <widget class="QLabel" name="lblRoomTemp">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>200</y>
-      <width>71</width>
-      <height>51</height>
+      <x>610</x>
+      <y>300</y>
+      <width>221</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>14</pointsize>
+      <family>Montserrat</family>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
+      <italic>false</italic>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: #594646;</string>
+     <string notr="true">color: #594646;
+font: 84px &quot;Montserrat&quot;;
+font-weight: bold;</string>
     </property>
     <property name="text">
-     <string>-</string>
+     <string>36.6</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -166,14 +183,16 @@ font: 19pt &quot;Montserrat&quot;;</string>
    <widget class="QLabel" name="lblName">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>10</y>
-      <width>100</width>
-      <height>31</height>
+      <x>752</x>
+      <y>31</y>
+      <width>273</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: #594646;</string>
+     <string notr="true">color: #594646;
+font: 22px &quot;Montserrat&quot;;
+font-weight: bold;</string>
     </property>
     <property name="text">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Null&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -185,14 +204,16 @@ font: 19pt &quot;Montserrat&quot;;</string>
    <widget class="QLabel" name="lblNamePlaceholder">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>10</y>
-      <width>171</width>
-      <height>31</height>
+      <x>752</x>
+      <y>31</y>
+      <width>273</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:#FFB17D;</string>
+     <string notr="true">background-color:#FFB17D;
+font: 22px &quot;Montserrat&quot;;
+font-weight: bold;</string>
     </property>
     <property name="text">
      <string/>
@@ -201,10 +222,10 @@ font: 19pt &quot;Montserrat&quot;;</string>
    <widget class="QLabel" name="lblSHeart">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>75</y>
-      <width>230</width>
-      <height>230</height>
+      <x>90</x>
+      <y>90</y>
+      <width>374</width>
+      <height>374</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -223,10 +244,10 @@ font: 19pt &quot;Montserrat&quot;;</string>
    <widget class="QLabel" name="lblSTemp">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>75</y>
-      <width>230</width>
-      <height>230</height>
+      <x>560</x>
+      <y>90</y>
+      <width>374</width>
+      <height>374</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -248,19 +269,19 @@ font: 19pt &quot;Montserrat&quot;;</string>
    <widget class="QPushButton" name="btnNext">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>310</y>
-      <width>111</width>
-      <height>41</height>
+      <x>830</x>
+      <y>470</y>
+      <width>222</width>
+      <height>67</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Montserrat</family>
-      <pointsize>19</pointsize>
-      <weight>50</weight>
+      <pointsize>38</pointsize>
+      <weight>75</weight>
       <italic>false</italic>
-      <bold>false</bold>
+      <bold>true</bold>
      </font>
     </property>
     <property name="toolTip">
@@ -275,19 +296,20 @@ background-color: rgb(193, 193, 193);
 border-radius: 3px;
 border:2px solid  rgb(193, 193, 193);
 padding: 4px;
-font: 19pt &quot;Montserrat&quot;;</string>
+font: 38pt &quot;Montserrat&quot;;
+font-weight: bold;</string>
     </property>
     <property name="text">
-     <string> Next</string>
+     <string> Next </string>
     </property>
    </widget>
    <widget class="QLabel" name="lblVector">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>140</y>
-      <width>41</width>
-      <height>35</height>
+      <x>340</x>
+      <y>185</y>
+      <width>75</width>
+      <height>60</height>
      </rect>
     </property>
     <property name="text">
@@ -306,10 +328,10 @@ font: 19pt &quot;Montserrat&quot;;</string>
    <widget class="QLabel" name="lblBody">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>140</y>
-      <width>41</width>
-      <height>41</height>
+      <x>820</x>
+      <y>178</y>
+      <width>70</width>
+      <height>70</height>
      </rect>
     </property>
     <property name="text">
@@ -325,10 +347,10 @@ font: 19pt &quot;Montserrat&quot;;</string>
    <widget class="QLabel" name="lblRoom">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>210</y>
-      <width>41</width>
-      <height>41</height>
+      <x>818</x>
+      <y>318</y>
+      <width>70</width>
+      <height>70</height>
      </rect>
     </property>
     <property name="text">
@@ -344,21 +366,25 @@ font: 19pt &quot;Montserrat&quot;;</string>
    <widget class="QLabel" name="lblCelcius">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>110</y>
+      <x>750</x>
+      <y>140</y>
       <width>100</width>
-      <height>25</height>
+      <height>35</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <family>Montserrat</family>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
+      <italic>false</italic>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: #594646;</string>
+     <string notr="true">color: #594646;
+font: 20px &quot;Montserrat&quot;;
+font-weight: bold;</string>
     </property>
     <property name="text">
      <string>Celcius</string>
@@ -370,10 +396,10 @@ font: 19pt &quot;Montserrat&quot;;</string>
    <widget class="QLabel" name="lblLine2">
     <property name="geometry">
      <rect>
-      <x>375</x>
-      <y>188</y>
-      <width>121</width>
-      <height>5</height>
+      <x>600</x>
+      <y>280</y>
+      <width>280</width>
+      <height>10</height>
      </rect>
     </property>
     <property name="text">
@@ -389,10 +415,10 @@ font: 19pt &quot;Montserrat&quot;;</string>
    <widget class="QLabel" name="lblLine1">
     <property name="geometry">
      <rect>
-      <x>105</x>
-      <y>188</y>
-      <width>121</width>
-      <height>5</height>
+      <x>137</x>
+      <y>280</y>
+      <width>280</width>
+      <height>10</height>
      </rect>
     </property>
     <property name="text">
@@ -408,10 +434,10 @@ font: 19pt &quot;Montserrat&quot;;</string>
    <widget class="QLabel" name="lblBlood">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>210</y>
-      <width>41</width>
-      <height>40</height>
+      <x>340</x>
+      <y>318</y>
+      <width>62</width>
+      <height>60</height>
      </rect>
     </property>
     <property name="text">
@@ -430,24 +456,25 @@ font: 19pt &quot;Montserrat&quot;;</string>
    <widget class="QLabel" name="lblScanning">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>20</y>
-      <width>261</width>
-      <height>51</height>
+      <x>335</x>
+      <y>26</y>
+      <width>334</width>
+      <height>81</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Montserrat</family>
-      <pointsize>30</pointsize>
-      <weight>50</weight>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
       <italic>false</italic>
-      <bold>false</bold>
+      <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
      <string notr="true">color: #594646;
-font: 30pt &quot;Montserrat&quot;;</string>
+font: 64px &quot;Montserrat&quot;;
+font-weight: bold;</string>
     </property>
     <property name="text">
      <string>Scanner</string>
@@ -459,10 +486,10 @@ font: 30pt &quot;Montserrat&quot;;</string>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>-8</y>
-      <width>91</width>
-      <height>71</height>
+      <x>708</x>
+      <y>10</y>
+      <width>100</width>
+      <height>90</height>
      </rect>
     </property>
     <property name="text">
@@ -481,14 +508,14 @@ font: 30pt &quot;Montserrat&quot;;</string>
    <widget class="QPushButton" name="btnBack_2">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>290</y>
-      <width>50</width>
-      <height>50</height>
+      <x>170</x>
+      <y>450</y>
+      <width>64</width>
+      <height>64</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">icon-size: 40px;
+     <string notr="true">icon-size: 64px;
 background-color: transparent;
 border: none;</string>
     </property>
@@ -503,14 +530,14 @@ border: none;</string>
    <widget class="QPushButton" name="btnNext_2">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>290</y>
-      <width>50</width>
-      <height>50</height>
+      <x>800</x>
+      <y>450</y>
+      <width>64</width>
+      <height>64</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">icon-size: 40px;
+     <string notr="true">icon-size: 64px;
 background-color: transparent;
 border: none;</string>
     </property>
@@ -525,21 +552,25 @@ border: none;</string>
    <widget class="QLabel" name="lblCelcius_2">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>120</y>
-      <width>41</width>
-      <height>25</height>
+      <x>270</x>
+      <y>140</y>
+      <width>100</width>
+      <height>35</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <family>Montserrat</family>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
+      <italic>false</italic>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: #594646;</string>
+     <string notr="true">color: #594646;
+font: 20px &quot;Montserrat&quot;;
+font-weight: bold;</string>
     </property>
     <property name="text">
      <string>Bpm</string>
@@ -551,21 +582,25 @@ border: none;</string>
    <widget class="QLabel" name="lblCelcius_3">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>190</y>
-      <width>41</width>
-      <height>25</height>
+      <x>290</x>
+      <y>290</y>
+      <width>100</width>
+      <height>35</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <family>Montserrat</family>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
+      <italic>false</italic>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: #594646;</string>
+     <string notr="true">color: #594646;
+font: 20px &quot;Montserrat&quot;;
+font-weight: bold;</string>
     </property>
     <property name="text">
      <string>SpO2</string>
@@ -577,17 +612,60 @@ border: none;</string>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>310</y>
-      <width>321</width>
-      <height>31</height>
+      <x>241</x>
+      <y>470</y>
+      <width>551</width>
+      <height>62</height>
      </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnInfo">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>350</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">text-align: left;
+border: none;
+background-color: #FFE2CE;
+font: 12pt &quot;Montserrat&quot;;
+font-weight: bold;</string>
+    </property>
+    <property name="text">
+     <string>RTHM-DEVICE- V.01.03.22 BETA</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnInfo_2">
+    <property name="geometry">
+     <rect>
+      <x>322</x>
+      <y>0</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>images/icons/i.png</normaloff>images/icons/i.png</iconset>
     </property>
    </widget>
    <zorder>btnNext</zorder>
@@ -610,10 +688,12 @@ border: none;</string>
    <zorder>lblScanning</zorder>
    <zorder>label_3</zorder>
    <zorder>btnBack_2</zorder>
-   <zorder>btnNext_2</zorder>
    <zorder>lblCelcius_2</zorder>
    <zorder>lblCelcius_3</zorder>
    <zorder>label</zorder>
+   <zorder>btnInfo</zorder>
+   <zorder>btnInfo_2</zorder>
+   <zorder>btnNext_2</zorder>
   </widget>
  </widget>
  <resources/>

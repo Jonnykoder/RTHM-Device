@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1024</width>
-    <height>600</height>
+    <height>534</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>0</x>
      <y>0</y>
      <width>1024</width>
-     <height>600</height>
+     <height>534</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -29,16 +29,16 @@ background-color:qlineargradient(spread:pad, x1:0.005, y1:0, x2:1, y2:1, stop:0 
    <widget class="QPushButton" name="btnScan">
     <property name="geometry">
      <rect>
-      <x>397</x>
-      <y>490</y>
-      <width>231</width>
-      <height>70</height>
+      <x>360</x>
+      <y>370</y>
+      <width>304</width>
+      <height>78</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Montserrat</family>
-      <pointsize>24</pointsize>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
       <italic>false</italic>
       <bold>true</bold>
@@ -52,26 +52,26 @@ background-color:qlineargradient(spread:pad, x1:0.005, y1:0, x2:1, y2:1, stop:0 
 background-color: rgb(255, 102, 0);
 border-radius: 5px;
 padding: 4px;
-font: 24pt &quot;Montserrat&quot;;
+font: 42px &quot;Montserrat&quot;;
 font-weight: bold;</string>
     </property>
     <property name="text">
-     <string>SCAN</string>
+     <string>SCAN   </string>
     </property>
    </widget>
    <widget class="QLineEdit" name="txtName">
     <property name="geometry">
      <rect>
-      <x>262</x>
-      <y>260</y>
-      <width>500</width>
-      <height>70</height>
+      <x>179</x>
+      <y>200</y>
+      <width>593</width>
+      <height>59</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Montserrat</family>
-      <pointsize>24</pointsize>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
       <italic>false</italic>
       <bold>true</bold>
@@ -81,7 +81,7 @@ font-weight: bold;</string>
      <string notr="true">border-radius:3px;
 background-color:#3F3D56;
 color:white;
-font: 24pt &quot;Montserrat&quot;;
+font: 56px &quot;Montserrat&quot;;
 font-weight: bold;</string>
     </property>
     <property name="alignment">
@@ -91,16 +91,16 @@ font-weight: bold;</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>262</x>
-      <y>180</y>
-      <width>501</width>
-      <height>70</height>
+      <x>179</x>
+      <y>120</y>
+      <width>629</width>
+      <height>81</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Montserrat</family>
-      <pointsize>26</pointsize>
+      <pointsize>-1</pointsize>
       <weight>75</weight>
       <italic>false</italic>
       <bold>true</bold>
@@ -108,23 +108,23 @@ font-weight: bold;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color:#3F3D56;
-font: 26pt &quot;Montserrat&quot;;
+font: 60px &quot;Montserrat&quot;;
 font-weight: bold;</string>
     </property>
     <property name="text">
      <string>What's your name?</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="imgHello">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>40</y>
-      <width>500</width>
-      <height>450</height>
+      <x>510</x>
+      <y>-10</y>
+      <width>588</width>
+      <height>430</height>
      </rect>
     </property>
     <property name="text">
@@ -140,14 +140,14 @@ font-weight: bold;</string>
    <widget class="QPushButton" name="btnBack_2">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>530</y>
-      <width>50</width>
-      <height>50</height>
+      <x>170</x>
+      <y>450</y>
+      <width>64</width>
+      <height>64</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">icon-size: 45px;
+     <string notr="true">icon-size: 64px;
 background-color: transparent;
 border: none;</string>
     </property>
@@ -163,15 +163,15 @@ border: none;</string>
     <property name="geometry">
      <rect>
       <x>-10</x>
-      <y>555</y>
-      <width>141</width>
-      <height>50</height>
+      <y>470</y>
+      <width>222</width>
+      <height>67</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Montserrat</family>
-      <pointsize>22</pointsize>
+      <pointsize>38</pointsize>
       <weight>75</weight>
       <italic>false</italic>
       <bold>true</bold>
@@ -186,9 +186,8 @@ background-color: #FFE2CE;
 border-radius: 3px;
 border:2px solid  rgb(255, 102, 0);
 padding: 4px;
-font: 22pt &quot;Montserrat&quot;;
-font-weight: bold;
-text-align: center;</string>
+font: 38pt &quot;Montserrat&quot;;
+font-weight: bold;</string>
     </property>
     <property name="text">
      <string>Back </string>
@@ -199,7 +198,7 @@ text-align: center;</string>
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>240</width>
+      <width>350</width>
       <height>30</height>
      </rect>
     </property>
@@ -207,7 +206,7 @@ text-align: center;</string>
      <string notr="true">text-align: left;
 border: none;
 background-color: #FFE2CE;
-font: 8pt &quot;Montserrat&quot;;
+font: 12pt &quot;Montserrat&quot;;
 font-weight: bold;</string>
     </property>
     <property name="text">
@@ -217,7 +216,7 @@ font-weight: bold;</string>
    <widget class="QPushButton" name="btnInfo_2">
     <property name="geometry">
      <rect>
-      <x>212</x>
+      <x>322</x>
       <y>0</y>
       <width>30</width>
       <height>30</height>
@@ -234,6 +233,27 @@ font-weight: bold;</string>
       <normaloff>images/icons/i.png</normaloff>images/icons/i.png</iconset>
     </property>
    </widget>
+   <widget class="QPushButton" name="btnScan_2">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>390</y>
+      <width>55</width>
+      <height>47</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">icon-size: 53px;
+background-color: transparent;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>images/icons/scan.png</normaloff>images/icons/scan.png</iconset>
+    </property>
+   </widget>
    <zorder>imgHello</zorder>
    <zorder>btnScan</zorder>
    <zorder>txtName</zorder>
@@ -242,6 +262,7 @@ font-weight: bold;</string>
    <zorder>btnBack_2</zorder>
    <zorder>btnInfo</zorder>
    <zorder>btnInfo_2</zorder>
+   <zorder>btnScan_2</zorder>
   </widget>
  </widget>
  <resources>
