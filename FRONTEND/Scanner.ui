@@ -80,7 +80,7 @@ font-weight: bold;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color: #594646;
-font: 74px &quot;Montserrat&quot;;
+font: 70px &quot;Montserrat&quot;;
 font-weight: bold;</string>
     </property>
     <property name="text">
@@ -110,7 +110,7 @@ font-weight: bold;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color: #594646;
-font: 74px &quot;Montserrat&quot;;
+font: 70px &quot;Montserrat&quot;;
 font-weight: bold;</string>
     </property>
     <property name="text">
@@ -140,7 +140,7 @@ font-weight: bold;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color: #594646;
-font: 74px &quot;Montserrat&quot;;
+font: 70px &quot;Montserrat&quot;;
 font-weight: bold;</string>
     </property>
     <property name="text">
@@ -170,7 +170,7 @@ font-weight: bold;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color: #594646;
-font: 74px &quot;Montserrat&quot;;
+font: 70px &quot;Montserrat&quot;;
 font-weight: bold;</string>
     </property>
     <property name="text">
@@ -473,7 +473,7 @@ font-weight: bold;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color: #594646;
-font: 64px &quot;Montserrat&quot;;
+font: 32px &quot;Montserrat&quot;;
 font-weight: bold;</string>
     </property>
     <property name="text">
