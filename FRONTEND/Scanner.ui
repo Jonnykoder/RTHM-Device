@@ -80,11 +80,11 @@ font-weight: bold;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color: #594646;
-font: 84px &quot;Montserrat&quot;;
+font: 78px &quot;Montserrat&quot;;
 font-weight: bold;</string>
     </property>
     <property name="text">
-     <string>36.6</string>
+     <string>-</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -110,11 +110,11 @@ font-weight: bold;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color: #594646;
-font: 84px &quot;Montserrat&quot;;
+font: 78px &quot;Montserrat&quot;;
 font-weight: bold;</string>
     </property>
     <property name="text">
-     <string>36.6</string>
+     <string>-</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -140,11 +140,11 @@ font-weight: bold;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color: #594646;
-font: 84px &quot;Montserrat&quot;;
+font: 78px &quot;Montserrat&quot;;
 font-weight: bold;</string>
     </property>
     <property name="text">
-     <string>36.6</string>
+     <string>-</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -170,11 +170,11 @@ font-weight: bold;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color: #594646;
-font: 84px &quot;Montserrat&quot;;
+font: 78px &quot;Montserrat&quot;;
 font-weight: bold;</string>
     </property>
     <property name="text">
-     <string>36.6</string>
+     <string>-</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
