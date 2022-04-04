@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Recepient</class>
+ <widget class="QWidget" name="Recepient">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>534</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>RTHM - Recepient</string>
+  </property>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1024</width>
+     <height>534</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget#widget{
+background-color:qlineargradient(spread:pad, x1:0.005, y1:0, x2:1, y2:1, stop:0 rgba(200, 197, 191, 255), stop:1 rgba(255, 255, 255, 255))}</string>
+   </property>
+   <widget class="QPushButton" name="btnBack">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>470</y>
+      <width>222</width>
+      <height>67</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>38</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;GO BACK TO HOME&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #3F3D56;
+background-color: #FFE2CE;
+border-radius: 3px;
+border:2px solid  rgb(255, 102, 0);
+padding: 4px;
+font: 38pt &quot;Montserrat&quot;;
+font-weight: bold;</string>
+    </property>
+    <property name="text">
+     <string>Back </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblName">
+    <property name="geometry">
+     <rect>
+      <x>752</x>
+      <y>31</y>
+      <width>273</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #594646;
+font: 22px &quot;Montserrat&quot;;
+font-weight: bold;</string>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Null&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblNamePlaceholder">
+    <property name="geometry">
+     <rect>
+      <x>752</x>
+      <y>31</y>
+      <width>273</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:#FFB17D;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnSend">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>470</y>
+      <width>222</width>
+      <height>67</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>38</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;SEND DATA&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #3F3D56;
+background-color: #FFE2CE;
+border-radius: 3px;
+border:2px solid  rgb(255, 102, 0);
+padding: 4px;
+font: 38pt &quot;Montserrat&quot;;
+font-weight: bold;</string>
+    </property>
+    <property name="text">
+     <string>Send</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblInput">
+    <property name="geometry">
+     <rect>
+      <x>313</x>
+      <y>71</y>
+      <width>398</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#3F3D56;
+font: 64pX &quot;Montserrat&quot;;
+font-weight: bold;</string>
+    </property>
+    <property name="text">
+     <string>SEND DATA</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnSend_2">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>450</y>
+      <width>64</width>
+      <height>64</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">icon-size: 64px;
+background-color: transparent;
+border: none;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>images/icons/Send(2).png</normaloff>images/icons/Send(2).png</iconset>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>708</x>
+      <y>10</y>
+      <width>100</width>
+      <height>90</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/icons/namedesign.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnBack_2">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>450</y>
+      <width>64</width>
+      <height>64</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">icon-size: 64px;
+background-color: transparent;
+border: none;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>images/icons/btnBack.png</normaloff>images/icons/btnBack.png</iconset>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblLine1">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>333</y>
+      <width>570</width>
+      <height>10</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/icons/line.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtNumber">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>260</y>
+      <width>411</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+border: 0;
+border-radius:16px;
+color:#3F3D56;
+font: 64pX &quot;Montserrat&quot;;
+font-weight: bold;</string>
+    </property>
+    <property name="text">
+     <string>9123456789</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblNumber">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>260</y>
+      <width>141</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>-1</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#3F3D56;
+font: 64pX &quot;Montserrat&quot;;
+font-weight: bold;</string>
+    </property>
+    <property name="text">
+     <string>+63-</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="imgHello_2">
+    <property name="geometry">
+     <rect>
+      <x>687</x>
+      <y>125</y>
+      <width>435</width>
+      <height>341</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/sms.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnInfo">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>350</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">text-align: left;
+border: none;
+background-color: #FFE2CE;
+font: 12pt &quot;Montserrat&quot;;
+font-weight: bold;</string>
+    </property>
+    <property name="text">
+     <string>RTHM-DEVICE- V.01.03.22 BETA</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnInfo_2">
+    <property name="geometry">
+     <rect>
+      <x>322</x>
+      <y>0</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+border:none;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>images/icons/i.png</normaloff>images/icons/i.png</iconset>
+    </property>
+   </widget>
+   <zorder>imgHello_2</zorder>
+   <zorder>lblNamePlaceholder</zorder>
+   <zorder>btnBack</zorder>
+   <zorder>lblName</zorder>
+   <zorder>btnSend</zorder>
+   <zorder>lblInput</zorder>
+   <zorder>btnSend_2</zorder>
+   <zorder>label_3</zorder>
+   <zorder>lblLine1</zorder>
+   <zorder>lblNumber</zorder>
+   <zorder>txtNumber</zorder>
+   <zorder>btnBack_2</zorder>
+   <zorder>btnInfo</zorder>
+   <zorder>btnInfo_2</zorder>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
