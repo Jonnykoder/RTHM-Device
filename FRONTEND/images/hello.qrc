@@ -1,8 +1,0 @@
-<RCC>
-  <qresource prefix="hello">
-    <file>hello.png</file>
-  </qresource>
-  <qresource prefix="btnHome">
-    <file>icons/btnHome.png</file>
-  </qresource>
-</RCC>

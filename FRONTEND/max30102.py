@@ -3,10 +3,10 @@
 # this code is currently for python 2.7
 from __future__ import print_function
 from time import sleep
-import os
+
 import RPi.GPIO as GPIO
 import smbus
-os.system('i2cdetect -y 1')
+
 # i2c address-es
 # not required?
 I2C_WRITE_ADDR = 0xAE
@@ -61,9 +61,8 @@ class MAX30102():
 
         self.reset()
 
-        #sleep(1)  # wait 1 sec
-        #sleep(0.1)
-        #os.system('i2cdetect -y 1')
+        sleep(1)  # wait 1 sec
+
         # read & clear interrupt register (read 1 byte)
         reg_data = self.bus.read_i2c_block_data(self.address, REG_INTR_STATUS_1, 1)
         # print("[SETUP] reset complete with interrupt register0: {0}".format(reg_data))

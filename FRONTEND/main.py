@@ -1,25 +1,25 @@
 # RTHM DEVICE V1.
 # WRITTEN AND CODED BY JOHN ERIC AZORES
 # Github:   https://github.com/Jonnykoder
-
+import PyQt5
+import max30102
 import sys
+import hrcalc
+import time
+import RPi.GPIO as GPIO
 from PyQt5.uic import loadUi
 from PyQt5 import  QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QWidget, QStackedWidget ,QLabel,QLineEdit,QGridLayout,QDesktopWidget,QMessageBox
 from PyQt5 import QtGui
 from PyQt5.QtGui import QPixmap
 from PyQt5 import QtCore
-import PyQt5
-#Sensor headers
-import max30102
 from smbus2 import SMBus
 from mlx90614 import MLX90614
-import hrcalc
-import time
-from sim800l import SIM800L
-import RPi.GPIO as GPIO
 from datetime import date
 from datetime import datetime
+from sim800l import SIM800L
+
+
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 GPIO.setup(18, GPIO.IN)
@@ -30,33 +30,13 @@ sensor = MLX90614(bus, address=0x5A)
 btnctr =0
 ctr = btnctr
 
-from sim800l import SIM800L
+
 sim800l=SIM800L('/dev/serial0')
-"""
-name="John"
-hr = str(92)
-sp02 = str(120)
-roomTemp = str(35.2)
-bodyTemp = str(34.2)
-deg = "C"
-date ="04-18-2023"
-time = "05:30 PM" 
-userData = ("--------------------------------------\nDate: {} \nTime: {} \n--------------------------------------\nName: {} \nHeart Rate: {} Bpm\nOxygen Saturation: {}% \nRoom Temp:{} C \nBody Temperature:{} C \n--------------------------------------\n\n RTHM DEVICE V1.03.22 BETA"
-            .format(
-                date,
-                time,
-                name,
-                hr,
-                sp02,
-                roomTemp,
-                bodyTemp)
-            )
-print(userData )
-sms=("test again")
-num = '9155006780' #this will be from the user input
-pref = '63'
-cp = pref+num
-"""
+
+
+
+
+
 #####################################################################################
 #Run Sensors on Thread
 class Thread(QtCore.QThread):
@@ -64,7 +44,6 @@ class Thread(QtCore.QThread):
     userName = QtCore.pyqtSignal(tuple)
     def run(self):
         while True:
-           
             celcius = sensor.get_object_1();
             faren = (celcius*1.8)+32
             room = sensor.get_ambient()
@@ -74,27 +53,16 @@ class Thread(QtCore.QThread):
             hr,hrb,sp,spb = hrcalc.calc_hr_and_spo2(ir, red)
             self.data_sensors.emit((hr,sp,hrb,spb,rt,bt))
 
-"""
-defining a class for the MainWindow
-    Content of this class :
-                         1. Load the Main  window
-                         2. load the gotoNewUser function that loads other class
-                      
-"""
 class MainWindow(QDialog):
     def __init__(self):              #constructor   <--- this function will load the ui within the block
         super(MainWindow, self).__init__()
         self.center()
-        loadUi("windowStart.ui", self)
-       
-        #load images from images folder
-        self.im = QPixmap("./images/startScreenLogo.png")
+        loadUi("./src/uiFiles/windowStart.ui", self)
+        self.im = QPixmap("./src/images/startScreenLogo.png")
         self.imgStartScreenLogo.setPixmap(self.im)
-
-        #add event when btnStart is pressed
         self.btnStart.clicked.connect(self.gotoNewUser)   #<----Load gotoNewUserfunction
+
     def center(self):
-        
         screen = QtGui.QGuiApplication.screenAt(QtGui.QCursor().pos())
         fg = self.frameGeometry()
         fg.moveCenter(screen.geometry().center())
@@ -104,31 +72,18 @@ class MainWindow(QDialog):
         widget.addWidget(newuser)
         widget.setCurrentIndex(widget.currentIndex()+1)  #<----Concat an index number to page 2.
 
-############################################################################
-"""
-defining a class for the gotoNewUserfile
-    Content of this class :
-                         1. Load the newUser.py  window
-                         2. validate name if present
-                         3. Load Scanner.py
-"""
 class NewUser(QDialog):
     def __init__(self):
         super(NewUser, self).__init__()
-        loadUi("newUser.ui", self)
+        loadUi("./src/uiFiles/newUser.ui", self)
         self.btnBack.clicked.connect(self.goBack)
-       
-        # load images from images folder
-        self.im = QPixmap("./images/hello.png")
+        self.im = QPixmap("./src/images/hello.png")
         self.imgHello.setPixmap(self.im)
-        
         self.btnScan.clicked.connect(self.gotoScanner)     #goto Scanner function
   
-
     def gotoScanner(self):
     
         newuser = (self.txtName.text()).lstrip()
-      
         if (newuser ==""):
             msg = QMessageBox()
             msg.setWindowTitle("Error")
@@ -141,7 +96,6 @@ class NewUser(QDialog):
             msg.setText("you will proceed to the scanning window. \nPlease put your finger on the scanner.")
             msg.setIcon(QMessageBox.Information)
             x=msg.exec()
-            
             self.scan = Scanner()
             self.recep = SendSms()
             widget.addWidget(self.scan)
@@ -157,7 +111,7 @@ class NewUser(QDialog):
 class Scanner(QDialog):
     def __init__(self):
         super(Scanner, self).__init__()
-        loadUi("Scanner.ui", self)
+        loadUi("./src/uiFiles/Scanner.ui", self)
         QtGui.QGuiApplication.processEvents()
         self.btnBack.clicked.connect(self.goBack)
         thread = Thread(self)
@@ -251,7 +205,7 @@ class SendSms(QDialog):
     def __init__(self):
         
         super(SendSms, self).__init__()
-        loadUi("Recepient.ui", self)
+        loadUi("./src/uiFiles/Recepient.ui", self)
         self.btnBack.clicked.connect(self.goBack)
         self.btnSend.clicked.connect(self.validationSend)
         self.txtNumber.mousePressEvent = (self.mousePressed)
