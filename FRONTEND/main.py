@@ -18,6 +18,8 @@ import hrcalc
 import time
 from sim800l import SIM800L
 import RPi.GPIO as GPIO
+from datetime import date
+from datetime import datetime
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 GPIO.setup(18, GPIO.IN)
@@ -30,6 +32,7 @@ ctr = btnctr
 
 from sim800l import SIM800L
 sim800l=SIM800L('/dev/serial0')
+"""
 name="John"
 hr = str(92)
 sp02 = str(120)
@@ -53,6 +56,7 @@ sms=("test again")
 num = '9155006780' #this will be from the user input
 pref = '63'
 cp = pref+num
+"""
 #####################################################################################
 #Run Sensors on Thread
 class Thread(QtCore.QThread):
@@ -113,7 +117,7 @@ class NewUser(QDialog):
         super(NewUser, self).__init__()
         loadUi("newUser.ui", self)
         self.btnBack.clicked.connect(self.goBack)
-     
+       
         # load images from images folder
         self.im = QPixmap("./images/hello.png")
         self.imgHello.setPixmap(self.im)
@@ -144,8 +148,8 @@ class NewUser(QDialog):
             widget.setCurrentIndex(widget.currentIndex() + 1)
             
             #assign this name to the next windows
-            self.scan.lblName.setText(newuser)
-            self.recep.lblName.setText(newuser)
+            self.scan.lblName.setText(self.txtName.text())
+            self.recep.lblName.setText(self.txtName.text())
     def goBack(self):
         self.mainwin = MainWindow()     
         widget.addWidget(self.mainwin)
@@ -179,28 +183,33 @@ class Scanner(QDialog):
             print("DEVICE STATUS: \t VITALS DETECTED...")
             ctr = btnctr + 1
             #print(ctr)
+            if(sp2 < 50 and hr2 <50):
+                self.label.setText("please put pressure on the sensor")
             
-            if(sp != -999 and sp < 100):
-                self.lblBodyTemp.setText(str(bt)+"°")   
-                self.lblOxygenLevel.setText(str(sp2))
-                self.lblRoomTemp.setText(str(rt)+"°")
-                ctr = btnctr + 2
-                #print (ctr)
-            if(hr != -999 and hr<105):
-                self.lblHeartRate.setText(str(hr2))  # heart rate needs atleast 5-10 seconds and pressure to initialize
-                ctr = btnctr + 3
-                #print (ctr)
-               
-                if (ctr < 3):
-                    self.label.setText("")
-                if (ctr == 3):
-                    self.lblScanning.setText("Done Scanning")
-                    self.btnNext.setEnabled(True)
-                    self.btnNext_2.setEnabled(True)
-                    self.btnNext.setStyleSheet("background-color:#FFE2CE; border:2px solid rgb(255,102,0);")
-                      
+            else:
+                self.label.setText("")
+                if(hr != -999 and hr > 50):
+                    
+                    ctr = btnctr + 2
+                    #print (ctr)
+                    if(sp >50):
+                        self.lblBodyTemp.setText(str(bt)+"°")   
+                        self.lblOxygenLevel.setText(str(sp2))
+                        self.lblRoomTemp.setText(str(rt)+"°")
+                        self.lblHeartRate.setText(str(hr2))  # heart rate needs atleast 5-10 seconds and pressure to initialize
+                        ctr = btnctr + 3
+                        #print (ctr)
+                   
+                    if (ctr < 3):
+                        self.label.setText("")
+                    if (ctr == 3):
+                        self.lblScanning.setText("Done Scanning")
+                        self.btnNext.setEnabled(True)
+                        self.btnNext_2.setEnabled(True)
+                        self.btnNext.setStyleSheet("background-color:#FFE2CE; border:2px solid rgb(255,102,0);")
+                          
         else:
-            
+            self.label.setText("please put pressure on the sensor if you want to continue scanning")
             ctr = btnctr + 1
             #print(ctr)
             
@@ -231,34 +240,39 @@ class Scanner(QDialog):
             self.btnNext_2.setEnabled(False)
             self.btnNext.setStyleSheet("background-color:gray; border:gray")
             self.label.setText("")
-            #stop scanner thread after going back
-            thread = Thread(self)
-            thread.data_sensors.connect(self.update_Sensors)
-            thread.quit()
-            print("Thread stopped...")
+            
+           
         
     def sendData(self):
         self.sendsms = SendSms()     
         widget.addWidget(self.sendsms)
         widget.setCurrentIndex(widget.currentIndex() + 1)
 class SendSms(QDialog):
-    def __init__(self):   
+    def __init__(self):
+        
         super(SendSms, self).__init__()
         loadUi("Recepient.ui", self)
         self.btnBack.clicked.connect(self.goBack)
         self.btnSend.clicked.connect(self.validationSend)
         self.txtNumber.mousePressEvent = (self.mousePressed)
+        thread = Thread(self)
+        thread.data_sensors.connect(self.validationSend)
         
     def mousePressed(self, event):
         self.txtNumber.clear()
     def goBack(self):
+        
+    
+       
         scan = Scanner()  # <---Instantiate NewUser  Class
         widget.addWidget(scan)
+        scan.lblScanning.setText("Scanning..")
         widget.setCurrentIndex(widget.currentIndex() -1)  # <----Concat an index number to page 2.
         inp = (self.txtNumber.text()).lstrip()
         if(inp == ""):
             self.txtNumber.setText("9123456789")
-    def validationSend(self):
+    def validationSend(self ):
+
         num = (self.txtNumber.text()).lstrip()
         if(num == "9123456789"):
             msg = QMessageBox()
@@ -285,6 +299,8 @@ class SendSms(QDialog):
                         msg.setIcon(QMessageBox.Warning)
                         x=msg.exec()
                     else:
+                        
+                        
                         #print("first digit"+f_dig)
                         pref = self.lblNumber.text()
                         number = self.txtNumber.text()
@@ -304,7 +320,29 @@ class SendSms(QDialog):
                     x=msg.exec()
     def popup_button(self, i):
         val = i.text()
+        Today = date.today()
+        d2day = Today.strftime("%B %d, %Y")
+        time = (datetime.today().strftime("%I:%M %p"))
         if(val == "OK"):
+            self.scanData = Scanner()
+            hr2 = self.scanData.lblHeartRate.text()
+            sp2 = self.scanData.lblOxygenLevel.text()
+            rt = self.scanData.lblRoomTemp.text()
+            bt = self.scanData.lblBodyTemp.text()
+            name = "null"
+            userData = ("--------------------------------------\nDate: {} \nTime: {} \n--------------------------------------\nName: {} \nHeart Rate: {} Bpm\nOxygen Saturation: {}% \nRoom Temp:{} C \nBody Temperature:{} C \n--------------------------------------\n\n RTHM DEVICE V1.03.22 BETA"
+                .format(
+                    d2day,
+                    time,
+                    name,
+                    hr2,
+                    sp2,
+                    rt,
+                    bt)
+                    )
+            pref = "63"
+            num ="9155006780"
+            cp = pref+num
             sim800l.send_sms(cp,userData)
             msg = QMessageBox()
             msg.setWindowTitle("Success!")

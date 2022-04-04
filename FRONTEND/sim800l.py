@@ -29,10 +29,10 @@ class SIM800L:
     def setup(self):
         self.command('AT\n') 
         self.command('ATE0\n')         # command echo off
-        self.command('AT+CLIP=1\n')    # caller line identification
-        self.command('AT+CMGF=1\n')    # plain text SMS
+        self.command('AT+CMGF=1\r\n')    # plain text SMS
         self.command('AT+CLTS=1\n')    # enable get local timestamp mode
         self.command('AT+CSCLK=0\n')   # disable automatic sleep
+        self.command('AT+CLIP=1\n')    # caller line identification
 
     def callback_incoming(self,action):
         self.incoming_action = action
