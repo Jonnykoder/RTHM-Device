@@ -180,7 +180,7 @@ border: none;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>images/icons/Send(2).png</normaloff>images/icons/Send(2).png</iconset>
+      <normaloff>../images/icons/Send(2).png</normaloff>../images/icons/Send(2).png</iconset>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -196,7 +196,7 @@ border: none;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>images/icons/namedesign.png</pixmap>
+     <pixmap>../images/icons/namedesign.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -224,7 +224,7 @@ border: none;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>images/icons/btnBack.png</normaloff>images/icons/btnBack.png</iconset>
+      <normaloff>../images/icons/btnBack.png</normaloff>../images/icons/btnBack.png</iconset>
     </property>
    </widget>
    <widget class="QLabel" name="lblLine1">
@@ -240,7 +240,7 @@ border: none;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>images/icons/line.png</pixmap>
+     <pixmap>../images/icons/line.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -316,7 +316,7 @@ font-weight: bold;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>images/sms.png</pixmap>
+     <pixmap>../images/sms.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -360,7 +360,7 @@ border:none;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>images/icons/i.png</normaloff>images/icons/i.png</iconset>
+      <normaloff>../images/icons/i.png</normaloff>../images/icons/i.png</iconset>
     </property>
    </widget>
    <zorder>imgHello_2</zorder>

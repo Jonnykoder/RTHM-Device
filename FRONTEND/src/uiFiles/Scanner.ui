@@ -235,7 +235,7 @@ font-weight: bold;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>images/icons/circle.png</pixmap>
+     <pixmap>../images/icons/circle.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -260,7 +260,7 @@ font-weight: bold;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>images/icons/circle.png</pixmap>
+     <pixmap>../images/icons/circle.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -316,7 +316,7 @@ font-weight: bold;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>images/icons/heart3.png</pixmap>
+     <pixmap>../images/icons/heart3.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -338,7 +338,7 @@ font-weight: bold;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>images/icons/bodytemp.png</pixmap>
+     <pixmap>../images/icons/bodytemp.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -357,7 +357,7 @@ font-weight: bold;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>images/hometemp.png</pixmap>
+     <pixmap>../images/hometemp.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -406,7 +406,7 @@ font-weight: bold;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>images/icons/line.png</pixmap>
+     <pixmap>../images/icons/line.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -425,7 +425,7 @@ font-weight: bold;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>images/icons/line.png</pixmap>
+     <pixmap>../images/icons/line.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -444,7 +444,7 @@ font-weight: bold;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>images/icons/blood.png</pixmap>
+     <pixmap>../images/icons/blood.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -496,7 +496,7 @@ font-weight: bold;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>images/icons/namedesign.png</pixmap>
+     <pixmap>../images/icons/namedesign.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -524,7 +524,7 @@ border: none;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>images/icons/btnBack.png</normaloff>images/icons/btnBack.png</iconset>
+      <normaloff>../images/icons/btnBack.png</normaloff>../images/icons/btnBack.png</iconset>
     </property>
    </widget>
    <widget class="QPushButton" name="btnNext_2">
@@ -546,7 +546,7 @@ border: none;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>images/icons/next.png</normaloff>images/icons/next.png</iconset>
+      <normaloff>../images/icons/next.png</normaloff>../images/icons/next.png</iconset>
     </property>
    </widget>
    <widget class="QLabel" name="lblCelcius_2">
@@ -666,7 +666,7 @@ border:none;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>images/icons/i.png</normaloff>images/icons/i.png</iconset>
+      <normaloff>../images/icons/i.png</normaloff>../images/icons/i.png</iconset>
     </property>
    </widget>
    <widget class="QLabel" name="lblCelcius_4">
