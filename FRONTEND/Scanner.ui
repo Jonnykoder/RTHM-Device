@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,9 +11,9 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>RTHM-Scanner</string>
+   <string>Form</string>
   </property>
-  <widget class="QWidget" name="widget" native="true">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -23,709 +23,688 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QWidget#widget{
-background-color:qlineargradient(spread:pad, x1:0.005, y1:0, x2:1, y2:1, stop:0 rgba(200, 197, 191, 255), stop:1 rgba(255, 255, 255, 255))}</string>
+    <string notr="true">background-color:qlineargradient(spread:pad, x1:0.005, y1:0, x2:1, y2:1, stop:0 rgba(200, 197, 191, 255), stop:1 rgba(255, 255, 255, 255))</string>
    </property>
-   <widget class="QPushButton" name="btnBack">
-    <property name="geometry">
-     <rect>
-      <x>-10</x>
-      <y>470</y>
-      <width>222</width>
-      <height>67</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Montserrat</family>
-      <pointsize>38</pointsize>
-      <weight>75</weight>
-      <italic>false</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;GO BACK TO HOME&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: #3F3D56;
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnInfo">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>350</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">text-align: left;
+border: none;
+background-color: #FFE2CE;
+font: 12pt &quot;Montserrat&quot;;
+font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>RTHM-DEVICE- V.01.03.22 BETA</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnInfo_2">
+   <property name="geometry">
+    <rect>
+     <x>322</x>
+     <y>0</y>
+     <width>30</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: transparent;
+border:none;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>images/icons/i.png</normaloff>images/icons/i.png</iconset>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblNamePlaceholder">
+   <property name="geometry">
+    <rect>
+     <x>752</x>
+     <y>31</y>
+     <width>273</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:#FFB17D;
+font: 22px &quot;Montserrat&quot;;
+font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblName">
+   <property name="geometry">
+    <rect>
+     <x>752</x>
+     <y>31</y>
+     <width>273</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #594646;
+font: 22px &quot;Montserrat&quot;;
+font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Null&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>708</x>
+     <y>10</y>
+     <width>100</width>
+     <height>90</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>images/icons/namedesign.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnBack">
+   <property name="geometry">
+    <rect>
+     <x>-10</x>
+     <y>470</y>
+     <width>222</width>
+     <height>67</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Montserrat</family>
+     <pointsize>38</pointsize>
+     <weight>75</weight>
+     <italic>false</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;GO BACK TO HOME&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #3F3D56;
 background-color: #FFE2CE;
 border-radius: 3px;
 border:2px solid  rgb(255, 102, 0);
 padding: 4px;
 font: 38pt &quot;Montserrat&quot;;
 font-weight: bold;</string>
-    </property>
-    <property name="text">
-     <string>Back </string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblHeartRate">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>160</y>
-      <width>221</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Montserrat</family>
-      <pointsize>-1</pointsize>
-      <weight>75</weight>
-      <italic>false</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: #594646;
-font: 70px &quot;Montserrat&quot;;
-font-weight: bold;</string>
-    </property>
-    <property name="text">
-     <string>-</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblOxygenLevel">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>300</y>
-      <width>221</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Montserrat</family>
-      <pointsize>-1</pointsize>
-      <weight>75</weight>
-      <italic>false</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: #594646;
-font: 70px &quot;Montserrat&quot;;
-font-weight: bold;</string>
-    </property>
-    <property name="text">
-     <string>-</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblBodyTemp">
-    <property name="geometry">
-     <rect>
-      <x>610</x>
-      <y>160</y>
-      <width>221</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Montserrat</family>
-      <pointsize>-1</pointsize>
-      <weight>75</weight>
-      <italic>false</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: #594646;
-font: 70px &quot;Montserrat&quot;;
-font-weight: bold;</string>
-    </property>
-    <property name="text">
-     <string>-</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblRoomTemp">
-    <property name="geometry">
-     <rect>
-      <x>610</x>
-      <y>300</y>
-      <width>221</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Montserrat</family>
-      <pointsize>-1</pointsize>
-      <weight>75</weight>
-      <italic>false</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: #594646;
-font: 70px &quot;Montserrat&quot;;
-font-weight: bold;</string>
-    </property>
-    <property name="text">
-     <string>-</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblName">
-    <property name="geometry">
-     <rect>
-      <x>752</x>
-      <y>31</y>
-      <width>273</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: #594646;
-font: 22px &quot;Montserrat&quot;;
-font-weight: bold;</string>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Null&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblNamePlaceholder">
-    <property name="geometry">
-     <rect>
-      <x>752</x>
-      <y>31</y>
-      <width>273</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color:#FFB17D;
-font: 22px &quot;Montserrat&quot;;
-font-weight: bold;</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblSHeart">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>90</y>
-      <width>374</width>
-      <height>374</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>images/icons/circle.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblSTemp">
-    <property name="geometry">
-     <rect>
-      <x>560</x>
-      <y>90</y>
-      <width>374</width>
-      <height>374</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>images/icons/circle.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnNext">
-    <property name="geometry">
-     <rect>
-      <x>830</x>
-      <y>470</y>
-      <width>222</width>
-      <height>67</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Montserrat</family>
-      <pointsize>38</pointsize>
-      <weight>75</weight>
-      <italic>false</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;NEXT SCREEN&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::RightToLeft</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: #3F3D56;
+   </property>
+   <property name="text">
+    <string>Back </string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnBack_2">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>450</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">icon-size: 64px;
+background-color: transparent;
+border: none;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>images/icons/btnBack.png</normaloff>images/icons/btnBack.png</iconset>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>241</x>
+     <y>470</y>
+     <width>551</width>
+     <height>62</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnNext">
+   <property name="geometry">
+    <rect>
+     <x>830</x>
+     <y>470</y>
+     <width>222</width>
+     <height>67</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Montserrat</family>
+     <pointsize>38</pointsize>
+     <weight>75</weight>
+     <italic>false</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;NEXT SCREEN&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #3F3D56;
 background-color: rgb(193, 193, 193);
 border-radius: 3px;
 border:2px solid  rgb(193, 193, 193);
 padding: 4px;
 font: 38pt &quot;Montserrat&quot;;
 font-weight: bold;</string>
-    </property>
-    <property name="text">
-     <string> Next </string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblVector">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>185</y>
-      <width>75</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>images/icons/heart3.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblBody">
-    <property name="geometry">
-     <rect>
-      <x>820</x>
-      <y>178</y>
-      <width>70</width>
-      <height>70</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>images/icons/bodytemp.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblRoom">
-    <property name="geometry">
-     <rect>
-      <x>818</x>
-      <y>318</y>
-      <width>70</width>
-      <height>70</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>images/hometemp.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblCelcius">
-    <property name="geometry">
-     <rect>
-      <x>780</x>
-      <y>150</y>
-      <width>100</width>
-      <height>35</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Montserrat</family>
-      <pointsize>-1</pointsize>
-      <weight>75</weight>
-      <italic>false</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: #594646;
-font: 26px &quot;Montserrat&quot;;
+   </property>
+   <property name="text">
+    <string> Next </string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnNext_2">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>450</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">icon-size: 64px;
+background-color: transparent;
+border: none;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>images/icons/next.png</normaloff>images/icons/next.png</iconset>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>91</x>
+     <y>169</y>
+     <width>360</width>
+     <height>102</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>images/icons/shadow.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>79</x>
+     <y>158</y>
+     <width>360</width>
+     <height>102</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>images/icons/front.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>554</x>
+     <y>169</y>
+     <width>360</width>
+     <height>102</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>images/icons/shadow.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>542</x>
+     <y>158</y>
+     <width>360</width>
+     <height>102</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>images/icons/front2.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>91</x>
+     <y>328</y>
+     <width>360</width>
+     <height>102</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>images/icons/shadow.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>79</x>
+     <y>317</y>
+     <width>360</width>
+     <height>102</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>images/icons/front2.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>554</x>
+     <y>328</y>
+     <width>360</width>
+     <height>102</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>images/icons/shadow.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>542</x>
+     <y>317</y>
+     <width>360</width>
+     <height>102</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>images/icons/front2.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblHeartRate">
+   <property name="geometry">
+    <rect>
+     <x>164</x>
+     <y>331</y>
+     <width>133</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Montserrat</family>
+     <pointsize>-1</pointsize>
+     <weight>75</weight>
+     <italic>false</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #594646;
+font: 60px &quot;Montserrat&quot;;
 font-weight: bold;</string>
-    </property>
-    <property name="text">
-     <string>C</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblLine2">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>280</y>
-      <width>280</width>
-      <height>10</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>images/icons/line.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblLine1">
-    <property name="geometry">
-     <rect>
-      <x>137</x>
-      <y>280</y>
-      <width>280</width>
-      <height>10</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>images/icons/line.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblBlood">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>318</y>
-      <width>62</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>images/icons/blood.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblScanning">
-    <property name="geometry">
-     <rect>
-      <x>285</x>
-      <y>26</y>
-      <width>451</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Montserrat</family>
-      <pointsize>-1</pointsize>
-      <weight>75</weight>
-      <italic>false</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: #594646;
+   </property>
+   <property name="text">
+    <string>-</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblCelcius_2">
+   <property name="geometry">
+    <rect>
+     <x>272</x>
+     <y>318</y>
+     <width>100</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Montserrat</family>
+     <pointsize>-1</pointsize>
+     <weight>75</weight>
+     <italic>false</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #ffffff;
+font: 20px &quot;Montserrat&quot;;
+font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>Bpm</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblRoomTemp">
+   <property name="geometry">
+    <rect>
+     <x>107</x>
+     <y>169</y>
+     <width>278</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Montserrat</family>
+     <pointsize>-1</pointsize>
+     <weight>75</weight>
+     <italic>false</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #594646;
+font: 60px &quot;Montserrat&quot;;
+font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>-</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_12">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>235</y>
+     <width>210</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #ffffff;
+font: 20px &quot;Montserrat&quot;;
+font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>Room Temperature</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_13">
+   <property name="geometry">
+    <rect>
+     <x>542</x>
+     <y>235</y>
+     <width>210</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #ffffff;
+font: 20px &quot;Montserrat&quot;;
+font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>Body Temperature</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblBodyTemp">
+   <property name="geometry">
+    <rect>
+     <x>568</x>
+     <y>169</y>
+     <width>278</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Montserrat</family>
+     <pointsize>-1</pointsize>
+     <weight>75</weight>
+     <italic>false</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #594646;
+font: 60px &quot;Montserrat&quot;;
+font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>-</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_14">
+   <property name="geometry">
+    <rect>
+     <x>542</x>
+     <y>393</y>
+     <width>210</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #ffffff;
+font: 20px &quot;Montserrat&quot;;
+font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>Oxygen Saturation</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblOxygenLevel">
+   <property name="geometry">
+    <rect>
+     <x>619</x>
+     <y>333</y>
+     <width>133</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Montserrat</family>
+     <pointsize>-1</pointsize>
+     <weight>75</weight>
+     <italic>false</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #594646;
+font: 70px &quot;Montserrat&quot;;
+font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>-</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_15">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>177</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>images/hometemp.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_16">
+   <property name="geometry">
+    <rect>
+     <x>821</x>
+     <y>174</y>
+     <width>72</width>
+     <height>72</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>images/icons/bodytemp.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_17">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>339</y>
+     <width>61</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>images/icons/heart.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_18">
+   <property name="geometry">
+    <rect>
+     <x>821</x>
+     <y>335</y>
+     <width>72</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>images/icons/blood.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblScanning">
+   <property name="geometry">
+    <rect>
+     <x>285</x>
+     <y>26</y>
+     <width>451</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Montserrat</family>
+     <pointsize>-1</pointsize>
+     <weight>75</weight>
+     <italic>false</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #594646;
 font: 48px &quot;Montserrat&quot;;
 font-weight: bold;</string>
-    </property>
-    <property name="text">
-     <string>Scanner</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>708</x>
-      <y>10</y>
-      <width>100</width>
-      <height>90</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>images/icons/namedesign.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnBack_2">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>450</y>
-      <width>64</width>
-      <height>64</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">icon-size: 64px;
-background-color: transparent;
-border: none;</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>images/icons/btnBack.png</normaloff>images/icons/btnBack.png</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnNext_2">
-    <property name="geometry">
-     <rect>
-      <x>800</x>
-      <y>450</y>
-      <width>64</width>
-      <height>64</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">icon-size: 64px;
-background-color: transparent;
-border: none;</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>images/icons/next.png</normaloff>images/icons/next.png</iconset>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblCelcius_2">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>140</y>
-      <width>100</width>
-      <height>35</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Montserrat</family>
-      <pointsize>-1</pointsize>
-      <weight>75</weight>
-      <italic>false</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: #594646;
-font: 20px &quot;Montserrat&quot;;
-font-weight: bold;</string>
-    </property>
-    <property name="text">
-     <string>Bpm</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblCelcius_3">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>290</y>
-      <width>100</width>
-      <height>35</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Montserrat</family>
-      <pointsize>-1</pointsize>
-      <weight>75</weight>
-      <italic>false</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: #594646;
-font: 20px &quot;Montserrat&quot;;
-font-weight: bold;</string>
-    </property>
-    <property name="text">
-     <string>SpO2</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>241</x>
-      <y>470</y>
-      <width>551</width>
-      <height>62</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnInfo">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>350</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">text-align: left;
-border: none;
-background-color: #FFE2CE;
-font: 12pt &quot;Montserrat&quot;;
-font-weight: bold;</string>
-    </property>
-    <property name="text">
-     <string>RTHM-DEVICE- V.01.03.22 BETA</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnInfo_2">
-    <property name="geometry">
-     <rect>
-      <x>322</x>
-      <y>0</y>
-      <width>30</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: transparent;
-border:none;</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>images/icons/i.png</normaloff>images/icons/i.png</iconset>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblCelcius_4">
-    <property name="geometry">
-     <rect>
-      <x>780</x>
-      <y>300</y>
-      <width>100</width>
-      <height>35</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Montserrat</family>
-      <pointsize>-1</pointsize>
-      <weight>75</weight>
-      <italic>false</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: #594646;
-font: 26px &quot;Montserrat&quot;;
-font-weight: bold;</string>
-    </property>
-    <property name="text">
-     <string>C</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <zorder>btnNext</zorder>
-   <zorder>lblNamePlaceholder</zorder>
-   <zorder>lblSTemp</zorder>
-   <zorder>lblSHeart</zorder>
-   <zorder>btnBack</zorder>
-   <zorder>lblHeartRate</zorder>
-   <zorder>lblOxygenLevel</zorder>
-   <zorder>lblBodyTemp</zorder>
-   <zorder>lblRoomTemp</zorder>
-   <zorder>lblName</zorder>
-   <zorder>lblVector</zorder>
-   <zorder>lblBody</zorder>
-   <zorder>lblRoom</zorder>
-   <zorder>lblCelcius</zorder>
-   <zorder>lblLine2</zorder>
-   <zorder>lblLine1</zorder>
-   <zorder>lblBlood</zorder>
-   <zorder>lblScanning</zorder>
-   <zorder>label_3</zorder>
-   <zorder>btnBack_2</zorder>
-   <zorder>lblCelcius_2</zorder>
-   <zorder>lblCelcius_3</zorder>
-   <zorder>label</zorder>
-   <zorder>btnInfo</zorder>
-   <zorder>btnInfo_2</zorder>
-   <zorder>btnNext_2</zorder>
-   <zorder>lblCelcius_4</zorder>
+   </property>
+   <property name="text">
+    <string>Scanner</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
  </widget>
  <resources/>

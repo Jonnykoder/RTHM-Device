@@ -363,6 +363,62 @@ border:none;</string>
       <normaloff>images/icons/i.png</normaloff>images/icons/i.png</iconset>
     </property>
    </widget>
+   <widget class="QPushButton" name="btnNew">
+    <property name="geometry">
+     <rect>
+      <x>435</x>
+      <y>470</y>
+      <width>222</width>
+      <height>67</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>38</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;SEND DATA&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #3F3D56;
+background-color: #FFE2CE;
+border-radius: 3px;
+border:2px solid  rgb(255, 102, 0);
+padding: 4px;
+font: 38pt &quot;Montserrat&quot;;
+font-weight: bold;</string>
+    </property>
+    <property name="text">
+     <string>New </string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>450</y>
+      <width>64</width>
+      <height>64</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">icon-size: 64px;
+background-color: transparent;
+border: none;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>images/icons/add.png</normaloff>images/icons/add.png</iconset>
+    </property>
+   </widget>
    <zorder>imgHello_2</zorder>
    <zorder>lblNamePlaceholder</zorder>
    <zorder>btnBack</zorder>
@@ -377,6 +433,8 @@ border:none;</string>
    <zorder>btnBack_2</zorder>
    <zorder>btnInfo</zorder>
    <zorder>btnInfo_2</zorder>
+   <zorder>btnNew</zorder>
+   <zorder>pushButton</zorder>
   </widget>
  </widget>
  <resources/>
