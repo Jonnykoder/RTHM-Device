@@ -397,7 +397,7 @@ font-weight: bold;</string>
      <string>New </string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btnNew_2">
     <property name="geometry">
      <rect>
       <x>610</x>
@@ -416,7 +416,7 @@ border: none;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>images/icons/add.png</normaloff>images/icons/add.png</iconset>
+      <normaloff>../images/icons/add.png</normaloff>../images/icons/add.png</iconset>
     </property>
    </widget>
    <zorder>imgHello_2</zorder>
@@ -434,7 +434,7 @@ border: none;</string>
    <zorder>btnInfo</zorder>
    <zorder>btnInfo_2</zorder>
    <zorder>btnNew</zorder>
-   <zorder>pushButton</zorder>
+   <zorder>btnNew_2</zorder>
   </widget>
  </widget>
  <resources/>

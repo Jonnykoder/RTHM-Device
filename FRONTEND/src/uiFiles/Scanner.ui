@@ -122,7 +122,7 @@ font-weight: bold;</string>
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>images/icons/namedesign.png</pixmap>
+    <pixmap>../images/icons/namedesign.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -278,7 +278,7 @@ border: none;</string>
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>images/icons/shadow.png</pixmap>
+    <pixmap>../images/icons/shadow.png</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
@@ -294,7 +294,7 @@ border: none;</string>
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>images/icons/front.png</pixmap>
+    <pixmap>../images/icons/front.png</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="label_6">
@@ -310,7 +310,7 @@ border: none;</string>
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>images/icons/shadow.png</pixmap>
+    <pixmap>../images/icons/shadow.png</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="label_7">
@@ -326,7 +326,7 @@ border: none;</string>
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>images/icons/front2.png</pixmap>
+    <pixmap>../images/icons/front2.png</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="label_8">
@@ -342,7 +342,7 @@ border: none;</string>
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>images/icons/shadow.png</pixmap>
+    <pixmap>../images/icons/shadow.png</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="label_9">
@@ -358,7 +358,7 @@ border: none;</string>
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>images/icons/front2.png</pixmap>
+    <pixmap>../images/icons/front2.png</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="label_10">
@@ -374,7 +374,7 @@ border: none;</string>
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>images/icons/shadow.png</pixmap>
+    <pixmap>../images/icons/shadow.png</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="label_11">
@@ -390,7 +390,7 @@ border: none;</string>
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>images/icons/front2.png</pixmap>
+    <pixmap>../images/icons/front2.png</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="lblHeartRate">
@@ -610,7 +610,7 @@ font-weight: bold;</string>
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>images/hometemp.png</pixmap>
+    <pixmap>../images/hometemp.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -632,7 +632,7 @@ font-weight: bold;</string>
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>images/icons/bodytemp.png</pixmap>
+    <pixmap>../images/icons/bodytemp.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -651,7 +651,7 @@ font-weight: bold;</string>
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>images/icons/heart.png</pixmap>
+    <pixmap>../images/icons/heart.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -670,7 +670,7 @@ font-weight: bold;</string>
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>images/icons/blood.png</pixmap>
+    <pixmap>../images/icons/blood.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>false</bool>
