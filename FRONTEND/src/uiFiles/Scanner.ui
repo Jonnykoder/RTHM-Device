@@ -184,7 +184,7 @@ border: none;</string>
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>images/icons/btnBack.png</normaloff>images/icons/btnBack.png</iconset>
+     <normaloff>../images/icons/btnBack.png</normaloff>../images/icons/btnBack.png</iconset>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
@@ -262,7 +262,7 @@ border: none;</string>
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>images/icons/next.png</normaloff>images/icons/next.png</iconset>
+     <normaloff>../images/icons/next.png</normaloff>../images/icons/next.png</iconset>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
@@ -412,7 +412,7 @@ border: none;</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: #594646;
+    <string notr="true">color: #ffffff;
 font: 60px &quot;Montserrat&quot;;
 font-weight: bold;</string>
    </property>
@@ -472,7 +472,7 @@ font-weight: bold;</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: #594646;
+    <string notr="true">color: #ffffff;
 font: 60px &quot;Montserrat&quot;;
 font-weight: bold;</string>
    </property>
@@ -538,7 +538,7 @@ font-weight: bold;</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: #594646;
+    <string notr="true">color: #ffffff;
 font: 60px &quot;Montserrat&quot;;
 font-weight: bold;</string>
    </property>
@@ -586,8 +586,8 @@ font-weight: bold;</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: #594646;
-font: 70px &quot;Montserrat&quot;;
+    <string notr="true">color: #ffffff;
+font: 60px &quot;Montserrat&quot;;
 font-weight: bold;</string>
    </property>
    <property name="text">
