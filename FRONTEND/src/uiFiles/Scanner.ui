@@ -322,11 +322,11 @@ border: none;</string>
      <height>102</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background: #FFE7D7;</string>
+   </property>
    <property name="text">
     <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap>../images/icons/front2.png</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="label_8">
@@ -354,11 +354,11 @@ border: none;</string>
      <height>102</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background: #FFE7D7;</string>
+   </property>
    <property name="text">
     <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap>../images/icons/front2.png</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="label_10">
@@ -386,11 +386,11 @@ border: none;</string>
      <height>102</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background: #FFE7D7;</string>
+   </property>
    <property name="text">
     <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap>../images/icons/front2.png</pixmap>
    </property>
   </widget>
   <widget class="QLabel" name="lblHeartRate">
@@ -780,6 +780,24 @@ font-weight: bold;</string>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_22">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>390</y>
+     <width>210</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #ffffff;
+font: 20px &quot;Montserrat&quot;;
+font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>Heart Rate</string>
    </property>
   </widget>
  </widget>
