@@ -15,7 +15,7 @@ def convert_to_string(buf):
 class SIM800L:
     def __init__(self,ser):
         try:
-            self.ser=serial.Serial("/dev/serial0", baudrate=9600, timeout=1)
+            self.ser=serial.Serial("/dev/ttyS0", baudrate=9600, timeout=1)
         except Exception as e:
             sys.exit("Error: {}".format(e))
         self.incoming_action = None
@@ -27,8 +27,8 @@ class SIM800L:
         self.savbuf = None
 
     def setup(self):
-        self.command('AT\n') 
-        self.command('ATE0\n')         # command echo off
+        self.command('AT\r\n') 
+        self.command('ATE0\r\n')         # command echo off
         self.command('AT+CMGF=1\r\n')    # plain text SMS
         self.command('AT+CLTS=1\n')    # enable get local timestamp mode
         self.command('AT+CSCLK=0\n')   # disable automatic sleep

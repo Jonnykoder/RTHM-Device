@@ -5,7 +5,7 @@ import PyQt5
 import max30102
 import sys
 import hrcalc
-import time
+
 import RPi.GPIO as GPIO
 from PyQt5.uic import loadUi
 from PyQt5 import  QtWidgets
@@ -15,43 +15,38 @@ from PyQt5.QtGui import QPixmap
 from PyQt5 import QtCore
 from smbus2 import SMBus
 from mlx90614 import MLX90614
-from datetime import date
-from datetime import datetime
+from datetime import date , datetime
+import time
 from sim800l import SIM800L
-
+import csv
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 GPIO.setup(18, GPIO.IN)
-sim800l=SIM800L('/dev/serial0')
+sim800l=SIM800L('/dev/ttyS0')
 m = max30102.MAX30102()
 bus = SMBus(1)
 sensor = MLX90614(bus, address=0x5A)
 btnctr =0
 ctr = btnctr
 
-
-sim800l=SIM800L('/dev/serial0')
-
-
-
-
-
-#####################################################################################
 #Run Sensors on Thread
 class Thread(QtCore.QThread):
+  
     data_sensors = QtCore.pyqtSignal(tuple)
     userName = QtCore.pyqtSignal(tuple)
     def run(self):
+        celcius = sensor.get_object_1();
+        faren = (celcius*1.8)+32
+        r = sensor.get_ambient()
+        roomTemp = round(r, 2)       #roomTemp
+        bodyTemp = (round(celcius+5,2)) #bodyTemp
+        
         while True:
-            celcius = sensor.get_object_1();
-            faren = (celcius*1.8)+32
-            room = sensor.get_ambient()
-            rt = round(room, 2)       #roomTemp
-            bt = (round(celcius+5,2)) #bodyTemp
             red, ir = m.read_sequential()
-            hr,hrb,sp,spb = hrcalc.calc_hr_and_spo2(ir, red)
-            self.data_sensors.emit((hr,sp,hrb,spb,rt,bt))
+            heartRate,hrb,oxySat,spb = hrcalc.calc_hr_and_spo2(ir, red)
+            self.data_sensors.emit((heartRate,oxySat,hrb,spb,roomTemp,bodyTemp))
+          
 
 class MainWindow(QDialog):
     def __init__(self):              #constructor   <--- this function will load the ui within the block
@@ -61,7 +56,7 @@ class MainWindow(QDialog):
         self.im = QPixmap("./src/images/startScreenLogo.png")
         self.imgStartScreenLogo.setPixmap(self.im)
         self.btnStart.clicked.connect(self.gotoNewUser)   #<----Load gotoNewUserfunction
-
+        
     def center(self):
         screen = QtGui.QGuiApplication.screenAt(QtGui.QCursor().pos())
         fg = self.frameGeometry()
@@ -80,9 +75,9 @@ class NewUser(QDialog):
         self.im = QPixmap("./src/images/hello.png")
         self.imgHello.setPixmap(self.im)
         self.btnScan.clicked.connect(self.gotoScanner)     #goto Scanner function
-  
+        
     def gotoScanner(self):
-    
+        
         newuser = (self.txtName.text()).lstrip()
         if (newuser ==""):
             msg = QMessageBox()
@@ -96,14 +91,20 @@ class NewUser(QDialog):
             msg.setText("you will proceed to the scanning window. \nPlease put your finger on the scanner.")
             msg.setIcon(QMessageBox.Information)
             x=msg.exec()
+            self.saveToLocalTemp()
             self.scan = Scanner()
-            self.recep = SendSms()
             widget.addWidget(self.scan)
             widget.setCurrentIndex(widget.currentIndex() + 1)
-            
-            #assign this name to the next windows
-            self.scan.lblName.setText(self.txtName.text())
-            self.recep.lblName.setText(self.txtName.text())
+    def saveToLocalTemp(self):
+        newuser = (self.txtName.text()).lstrip()
+        fields = ['Name']
+        v_name = newuser
+        data = [[v_name]]
+        filename = "temp_user_name.csv"
+        with open(filename, 'w') as f:
+            csvwriter = csv.writer(f)
+            csvwriter.writerow(fields)
+            csvwriter.writerows(data)
     def goBack(self):
         self.mainwin = MainWindow()     
         widget.addWidget(self.mainwin)
@@ -114,61 +115,103 @@ class Scanner(QDialog):
         loadUi("./src/uiFiles/Scanner.ui", self)
         QtGui.QGuiApplication.processEvents()
         self.btnBack.clicked.connect(self.goBack)
+        self.getNamedata()
         thread = Thread(self)
         thread.data_sensors.connect(self.update_Sensors)
         thread.start()
         self.lblScanning.setText("Scanning..")
         #set this button to disable when data is not yet scanned
         self.btnNext.setEnabled(False)
-        self.btnNext.clicked.connect(self.sendData)
+        self.btnNext.clicked.connect(self.gotoSms)
         self.btnNext_2.setEnabled(False)
         self.btnNext.setStyleSheet("background-color:gray; border:gray")
-        #print(ctr)
+        
+    def getNamedata(self):
+        filename = "temp_user_name.csv"
+        with open(filename, 'r') as r:
+            csv_reader = csv.reader(r)
+            for line_no , line in enumerate(csv_reader , 1):
+                if line_no == 2:
+                    name = (line[0])
+        self.lblName.setText(name)
     def update_Sensors(self, data ):
-        hr, sp , hrb , spb ,rt,bt= data
-        hr2 = int(hr)
-        sp2 = int(sp)
+        heartRate, oxySat , hrb , spb ,roomTemp,bodyTemp= data
+        heartRate_val = int(heartRate)
+        oxySat_val = int(oxySat)
        
         print("DEVICE STATUS: \t SCANNING SENSOR DATA...")
         ctr = btnctr + 1
-        
-       
+        self.lblRoomTemp.setText(str(roomTemp)+"° C")
         if(hrb == True and spb ==True):
-            print("DEVICE STATUS: \t VITALS DETECTED...")
-            ctr = btnctr + 1
-            #print(ctr)
-            if(sp2 < 50 and hr2 <50):
-                self.label.setText("please put pressure on the sensor")
             
-            else:
-                self.label.setText("")
-                if(hr != -999 and hr > 50):
-                    
-                    ctr = btnctr + 2
-                    #print (ctr)
-                    if(sp >50):
-                        self.lblBodyTemp.setText(str(bt)+"°")   
-                        self.lblOxygenLevel.setText(str(sp2))
-                        self.lblRoomTemp.setText(str(rt)+"°")
-                        self.lblHeartRate.setText(str(hr2))  # heart rate needs atleast 5-10 seconds and pressure to initialize
-                        ctr = btnctr + 3
-                        #print (ctr)
-                   
-                    if (ctr < 3):
-                        self.label.setText("")
-                    if (ctr == 3):
+            print("DEVICE STATUS: \t VITALS DETECTED...")
+            
+            self.lblBodyTemp.setText(str(bodyTemp)+"° C")
+            ctr = btnctr + 2
+            self.label_7.setStyleSheet("background-color:#FF6600; border:1px solid rgb(255,102,0);")
+          
+            if(heartRate != -999 and  50 <= heartRate <= 150):
+                self.label_9.setStyleSheet("background-color:#FF6600; border:1px solid rgb(255,102,0);")
+                ctr = btnctr + 3
+                self.lblHeartRate.setText(str(heartRate_val))  # heart rate needs atleast 5-10 seconds and pressure to initialize
+                if(oxySat >50):
+                    self.lblOxygenLevel.setText(str(oxySat_val) + "%")
+                    ctr = btnctr + 4
+                    if(ctr >2 and hrb == True and spb ==True):
+                        t = 5
+                        while t:
+                            s = divmod(t ,60)
+                                #time_format = '{:02}'.format(s)
+                                #print("Scanning in:" +time_format)
+                            time.sleep(1)
+                            t -=1
+                            if (t==0):
+                                break
+                            else:
+                                continue
                         self.lblScanning.setText("Done Scanning")
                         self.btnNext.setEnabled(True)
                         self.btnNext_2.setEnabled(True)
+                        self.label_11.setStyleSheet("background-color:#FF6600; border:1px solid rgb(255,102,0);")
                         self.btnNext.setStyleSheet("background-color:#FFE2CE; border:2px solid rgb(255,102,0);")
-                          
-        else:
-            self.label.setText("please put pressure on the sensor if you want to continue scanning")
-            ctr = btnctr + 1
-            #print(ctr)
-            
-       
-       
+                        self.saveTempData(data)
+                """
+            if(oxySat_val < 50 and heartRate_val <50):
+                self.lblNotice.setText("please put pressure on the sensor")
+            else:
+                self.label.setText("")
+                if(heartRate != -999 and heartRate > 50):
+                    self.label_9.setStyleSheet("background-color:#FF6600; border:1px solid rgb(255,102,0);")
+                    ctr = btnctr + 3
+                    #print (ctr)
+                    self.lblHeartRate.setText(str(heartRate_val))  # heart rate needs atleast 5-10 seconds and pressure to initialize
+                    if(oxySat >50):
+                        self.lblOxygenLevel.setText(str(oxySat_val) + "%")
+                        ctr = btnctr + 4
+   
+                    if (ctr ==3):
+                        self.label.setText("")
+                        self.btnNext.setStyleSheet("background-color:#FFE2CE; border:2px solid rgb(255,102,0);")
+                        
+                    if (ctr == 4):
+                        
+                        while t:
+                            s = divmod(t ,60)
+                            #time_format = '{:02}'.format(s)
+                            #print("Scanning in:" +time_format)
+                            time.sleep(1)
+                            t -=1
+                            
+                        self.lblScanning.setText("Done Scanning")
+                        self.btnNext.setEnabled(True)
+                        self.btnNext_2.setEnabled(True)
+                        self.label_11.setStyleSheet("background-color:#FF6600; border:1px solid rgb(255,102,0);")
+                        self.btnNext.setStyleSheet("background-color:#FFE2CE; border:2px solid rgb(255,102,0);")
+                        self.saveTempData(data)
+                        """
+            else:
+                self.lblNotice.setText("please put pressure on the sensor if you want to continue scanning")
+                ctr = btnctr + 1
     def goBack(self):
         msg = QMessageBox()
         msg.setWindowTitle("Warning")
@@ -178,14 +221,14 @@ class Scanner(QDialog):
         msg.setDefaultButton(QMessageBox.Cancel)
         msg.buttonClicked.connect(self.popup_button)
         x=msg.exec()
-        
+       
     def popup_button(self, i):
         val = i.text()
         if(val == "OK"):
             newuser = NewUser()  # <---Instantiate NewUser  Class
             widget.addWidget(newuser)
             widget.setCurrentIndex(widget.currentIndex() -1)  # <----Concat an index number to page 2.
-            self.lblScanning.setText("Scanning..")
+            #self.lblScanning.setText("Scanning..")
             self.lblHeartRate.setText("-")
             self.lblRoomTemp.setText("-")
             self.lblOxygenLevel.setText("-")
@@ -194,16 +237,35 @@ class Scanner(QDialog):
             self.btnNext_2.setEnabled(False)
             self.btnNext.setStyleSheet("background-color:gray; border:gray")
             self.label.setText("")
-            
-           
-        
-    def sendData(self):
+            self.label_7.setStyleSheet("background-color:#FFE7D7; border:1px solid rgb(255,102,0);")
+            self.label_9.setStyleSheet("background-color:#FFE7D7; border:1px solid rgb(255,102,0);")
+            self.label_11.setStyleSheet("background-color:#FFE7D7; border:1px solid rgb(255,102,0);")
+            self.lblScanning.setText("Scanning..")
+    def gotoSms(self):
         self.sendsms = SendSms()     
         widget.addWidget(self.sendsms)
         widget.setCurrentIndex(widget.currentIndex() + 1)
+    
+    def saveTempData(self , data):
+        heartRate, oxySat , hrb , spb ,roomTemp,bodyTemp= data
+        # field names will be assigned to the csv file
+        fields = [ 'Room_Temp' ,'Body_Temp' , 'Oxy_Sat' , 'Heart_rate']
+        v_rt = roomTemp
+        v_bt = bodyTemp 
+        v_oxs = int(oxySat)
+        v_hr = heartRate
+        data = [[v_rt , v_bt , v_oxs , v_hr]]
+        print(data)
+        filename = "temp_user_data.csv"
+        with open(filename, 'w') as f:
+            # creating a csv writer object
+            csvwriter = csv.writer(f)
+            # writing the fields
+            csvwriter.writerow(fields)
+            # writing the data rows
+            csvwriter.writerows(data)
 class SendSms(QDialog):
     def __init__(self):
-        
         super(SendSms, self).__init__()
         loadUi("./src/uiFiles/Recepient.ui", self)
         self.btnBack.clicked.connect(self.goBack)
@@ -215,9 +277,7 @@ class SendSms(QDialog):
     def mousePressed(self, event):
         self.txtNumber.clear()
     def goBack(self):
-        
-    
-       
+
         scan = Scanner()  # <---Instantiate NewUser  Class
         widget.addWidget(scan)
         scan.lblScanning.setText("Scanning..")
@@ -226,7 +286,6 @@ class SendSms(QDialog):
         if(inp == ""):
             self.txtNumber.setText("9123456789")
     def validationSend(self ):
-
         num = (self.txtNumber.text()).lstrip()
         if(num == "9123456789"):
             msg = QMessageBox()
@@ -253,9 +312,6 @@ class SendSms(QDialog):
                         msg.setIcon(QMessageBox.Warning)
                         x=msg.exec()
                     else:
-                        
-                        
-                        #print("first digit"+f_dig)
                         pref = self.lblNumber.text()
                         number = self.txtNumber.text()
                         msg = QMessageBox()
@@ -273,18 +329,29 @@ class SendSms(QDialog):
                     msg.setIcon(QMessageBox.Warning)
                     x=msg.exec()
     def popup_button(self, i):
+        num = (self.txtNumber.text()).lstrip()
         val = i.text()
         Today = date.today()
         d2day = Today.strftime("%B %d, %Y")
         time = (datetime.today().strftime("%I:%M %p"))
         if(val == "OK"):
-            self.scanData = Scanner()
-            hr2 = self.scanData.lblHeartRate.text()
-            sp2 = self.scanData.lblOxygenLevel.text()
-            rt = self.scanData.lblRoomTemp.text()
-            bt = self.scanData.lblBodyTemp.text()
-            name = "null"
-            userData = ("--------------------------------------\nDate: {} \nTime: {} \n--------------------------------------\nName: {} \nHeart Rate: {} Bpm\nOxygen Saturation: {}% \nRoom Temp:{} C \nBody Temperature:{} C \n--------------------------------------\n\n RTHM DEVICE V1.03.22 BETA"
+            userName = "temp_user_name.csv"
+            filename = "temp_user_data.csv"
+            with open(userName, 'r') as n:
+                csv_reader = csv.reader(n)
+                for line_no , line in enumerate(csv_reader , 1):
+                    if line_no == 2:
+                        v_name = (line[0])
+            with open(filename, 'r') as r:
+                csv_reader = csv.reader(r)
+                for line_no , line in enumerate(csv_reader , 1):
+                    if line_no == 2:
+                        rt = (line[0])
+                        bt = (line[1])
+                        sp2 = (line[2])
+                        hr2 = (line[3])
+            name = v_name
+            userData = ("----------------------------------\nDate: {} \nTime: {} \n----------------------------------\nName: {} \nHeart Rate: {} Bpm\nOxygen Saturation: {}% \nRoom Temp:{} C \nBody Temperature:{} C \n----------------------------------\n\n RTHM DEVICE V1.03.22 BETA"
                 .format(
                     d2day,
                     time,
@@ -295,16 +362,13 @@ class SendSms(QDialog):
                     bt)
                     )
             pref = "63"
-            num ="9155006780"
             cp = pref+num
             sim800l.send_sms(cp,userData)
             msg = QMessageBox()
             msg.setWindowTitle("Success!")
             msg.setText("The data has been sent .")
             msg.setIcon(QMessageBox.Information)
-            x=msg.exec()
-        
-        
+            x=msg.exec()  
 app = QApplication(sys.argv)
 mainwindow = MainWindow()
 widget = QStackedWidget()

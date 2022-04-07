@@ -190,8 +190,8 @@ border: none;</string>
   <widget class="QLabel" name="lblNotice">
    <property name="geometry">
     <rect>
-     <x>241</x>
-     <y>470</y>
+     <x>200</x>
+     <y>70</y>
      <width>551</width>
      <height>62</height>
     </rect>
