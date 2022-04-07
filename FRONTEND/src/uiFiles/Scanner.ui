@@ -187,7 +187,7 @@ border: none;</string>
      <normaloff>images/icons/btnBack.png</normaloff>images/icons/btnBack.png</iconset>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="lblNotice">
    <property name="geometry">
     <rect>
      <x>241</x>
@@ -472,7 +472,7 @@ font-weight: bold;</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: #594646;
+    <string notr="true">color: #fff;
 font: 60px &quot;Montserrat&quot;;
 font-weight: bold;</string>
    </property>
