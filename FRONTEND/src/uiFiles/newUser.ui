@@ -131,7 +131,7 @@ font-weight: bold;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>images/hello.png</pixmap>
+     <pixmap>../images/hello.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -156,7 +156,7 @@ border: none;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>images/icons/btnBack.png</normaloff>images/icons/btnBack.png</iconset>
+      <normaloff>../images/icons/btnBack.png</normaloff>../images/icons/btnBack.png</iconset>
     </property>
    </widget>
    <widget class="QPushButton" name="btnBack">
@@ -231,7 +231,7 @@ border:none;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>images/icons/i.png</normaloff>images/icons/i.png</iconset>
+      <normaloff>../images/icons/i.png</normaloff>../images/icons/i.png</iconset>
     </property>
    </widget>
    <widget class="QPushButton" name="btnScan_2">
@@ -253,7 +253,7 @@ border: none;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>images/icons/scan.png</normaloff>images/icons/scan.png</iconset>
+      <normaloff>../images/icons/scan.png</normaloff>../images/icons/scan.png</iconset>
     </property>
    </widget>
    <zorder>imgHello</zorder>
@@ -268,7 +268,7 @@ border: none;</string>
   </widget>
  </widget>
  <resources>
-  <include location="images/hello.qrc"/>
+  <include location="../images/hello.qrc"/>
  </resources>
  <connections/>
 </ui>

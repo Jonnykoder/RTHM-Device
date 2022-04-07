@@ -61,7 +61,7 @@ class MAX30102():
 
         self.reset()
 
-        #sleep(1)  # wait 1 sec
+        sleep(1)  # wait 1 sec
 
         # read & clear interrupt register (read 1 byte)
         reg_data = self.bus.read_i2c_block_data(self.address, REG_INTR_STATUS_1, 1)
