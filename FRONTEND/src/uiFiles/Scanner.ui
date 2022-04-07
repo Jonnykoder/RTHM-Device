@@ -187,7 +187,7 @@ border: none;</string>
      <normaloff>../images/icons/btnBack.png</normaloff>../images/icons/btnBack.png</iconset>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="lblNotice">
    <property name="geometry">
     <rect>
      <x>241</x>
