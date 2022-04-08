@@ -36,14 +36,15 @@ class Thread(QtCore.QThread):
     data_sensors = QtCore.pyqtSignal(tuple)
     userName = QtCore.pyqtSignal(tuple)
     def run(self):
-        celcius = sensor.get_object_1();
-        faren = (celcius*1.8)+32
-        r = sensor.get_ambient()
-        roomTemp = round(r, 2)       #roomTemp
-        bodyTemp = (round(celcius+5,2)) #bodyTemp
-        
+        cal = 3.75  #set temp calibration value
         while True:
+            celcius = sensor.get_object_1();
+            faren = (celcius*1.8)+32
+            r = sensor.get_ambient()
             red, ir = m.read_sequential()
+           
+            roomTemp = round(r, 2)       #roomTemp
+            bodyTemp = (round(celcius+cal,2)) #bodyTemp
             heartRate,hrb,oxySat,spb = hrcalc.calc_hr_and_spo2(ir, red)
             self.data_sensors.emit((heartRate,oxySat,hrb,spb,roomTemp,bodyTemp))
           
@@ -109,6 +110,7 @@ class NewUser(QDialog):
         self.mainwin = MainWindow()     
         widget.addWidget(self.mainwin)
         widget.setCurrentIndex(widget.currentIndex() -1)
+      
 class Scanner(QDialog):
     def __init__(self):
         super(Scanner, self).__init__()
@@ -132,8 +134,10 @@ class Scanner(QDialog):
             csv_reader = csv.reader(r)
             for line_no , line in enumerate(csv_reader , 1):
                 if line_no == 2:
-                    name = (line[0])
-        self.lblName.setText(name)
+                    self.name = (line[0])
+                    self.lblName.setText(self.name)
+                    QApplication.processEvents()
+        self.lblName.repaint() #this doesn't work
     def update_Sensors(self, data ):
         heartRate, oxySat , hrb , spb ,roomTemp,bodyTemp= data
         heartRate_val = int(heartRate)
@@ -154,11 +158,11 @@ class Scanner(QDialog):
                 self.label_9.setStyleSheet("background-color:#FF6600; border:1px solid rgb(255,102,0);")
                 ctr = btnctr + 3
                 self.lblHeartRate.setText(str(heartRate_val))  # heart rate needs atleast 5-10 seconds and pressure to initialize
-                if(oxySat >50):
+                t = 4
+                if(oxySat >85):
                     self.lblOxygenLevel.setText(str(oxySat_val) + "%")
                     ctr = btnctr + 4
                     if(ctr >2 and hrb == True and spb ==True):
-                        t = 5
                         while t:
                             s = divmod(t ,60)
                                 #time_format = '{:02}'.format(s)
@@ -237,9 +241,9 @@ class Scanner(QDialog):
             self.btnNext_2.setEnabled(False)
             self.btnNext.setStyleSheet("background-color:gray; border:gray")
             self.label.setText("")
-            self.label_7.setStyleSheet("background-color:#FFE7D7; border:1px solid rgb(255,102,0);")
-            self.label_9.setStyleSheet("background-color:#FFE7D7; border:1px solid rgb(255,102,0);")
-            self.label_11.setStyleSheet("background-color:#FFE7D7; border:1px solid rgb(255,102,0);")
+            self.label_7.setStyleSheet("background-color:#FFE7D7; border:1px solid #FFE7D7;")
+            self.label_9.setStyleSheet("background-color:#FFE7D7; border:1px solid #FFE7D7;")
+            self.label_11.setStyleSheet("background-color:#FFE7D7; border:1px solid #FFE7D7;")
             self.lblScanning.setText("Scanning..")
     def gotoSms(self):
         self.sendsms = SendSms()     
@@ -271,9 +275,17 @@ class SendSms(QDialog):
         self.btnBack.clicked.connect(self.goBack)
         self.btnSend.clicked.connect(self.validationSend)
         self.txtNumber.mousePressEvent = (self.mousePressed)
-        thread = Thread(self)
+        """thread = Thread(self)
         thread.data_sensors.connect(self.validationSend)
-        
+        """
+        userName = "temp_user_name.csv"
+        with open(userName, 'r') as n:
+            csv_reader = csv.reader(n)
+            for line_no , line in enumerate(csv_reader , 1):
+                if line_no == 2:
+                    v_name = (line[0])
+                    self.lblName.setText(v_name)
+                    self.lblName.repaint()
     def mousePressed(self, event):
         self.txtNumber.clear()
     def goBack(self):
