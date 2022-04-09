@@ -363,12 +363,12 @@ border:none;</string>
       <normaloff>../images/icons/i.png</normaloff>../images/icons/i.png</iconset>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnNew">
+   <widget class="QPushButton" name="btnRestart">
     <property name="geometry">
      <rect>
-      <x>435</x>
-      <y>470</y>
-      <width>222</width>
+      <x>-20</x>
+      <y>90</y>
+      <width>231</width>
       <height>67</height>
      </rect>
     </property>
@@ -394,14 +394,14 @@ font: 38pt &quot;Montserrat&quot;;
 font-weight: bold;</string>
     </property>
     <property name="text">
-     <string>New </string>
+     <string>Restart</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btnNew_2">
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>450</y>
+      <x>180</x>
+      <y>50</y>
       <width>64</width>
       <height>64</height>
      </rect>
@@ -433,7 +433,7 @@ border: none;</string>
    <zorder>btnBack_2</zorder>
    <zorder>btnInfo</zorder>
    <zorder>btnInfo_2</zorder>
-   <zorder>btnNew</zorder>
+   <zorder>btnRestart</zorder>
    <zorder>btnNew_2</zorder>
   </widget>
  </widget>
