@@ -67,7 +67,7 @@ class MainWindow(QDialog):
         newuser = NewUser()   #<---Instantiate NewUser  Class
         widget.addWidget(newuser)
         widget.setCurrentIndex(widget.currentIndex()+1)  #<----Concat an index number to page 2.
-
+        self.close()
 class NewUser(QDialog):
     def __init__(self):
         super(NewUser, self).__init__()
@@ -76,7 +76,7 @@ class NewUser(QDialog):
         self.im = QPixmap("./src/images/hello.png")
         self.imgHello.setPixmap(self.im)
         self.btnScan.clicked.connect(self.gotoScanner)     #goto Scanner function
-        
+      
     def gotoScanner(self):
         
         newuser = (self.txtName.text()).lstrip()
@@ -91,11 +91,15 @@ class NewUser(QDialog):
             msg.setWindowTitle("notice")
             msg.setText("you will proceed to the scanning window. \nPlease put your finger on the scanner.")
             msg.setIcon(QMessageBox.Information)
+           
             x=msg.exec()
             self.saveToLocalTemp()
             self.scan = Scanner()
+            self.scan.displayInfo()
+            self.scan.lblName.setText(self.txtName.text())
             widget.addWidget(self.scan)
             widget.setCurrentIndex(widget.currentIndex() + 1)
+            self.scan.setUiDisabled()
     def saveToLocalTemp(self):
         newuser = (self.txtName.text()).lstrip()
         fields = ['Name']
@@ -117,17 +121,42 @@ class Scanner(QDialog):
         loadUi("./src/uiFiles/Scanner.ui", self)
         QtGui.QGuiApplication.processEvents()
         self.btnBack.clicked.connect(self.goBack)
+        self.btnRescan.clicked.connect(self.reScan)
         self.getNamedata()
+       
         thread = Thread(self)
         thread.data_sensors.connect(self.update_Sensors)
         thread.start()
-        self.lblScanning.setText("Scanning..")
+        self.setUiDisabled()
+    def displayInfo(self):
+        self.show()
+    def setUiDisabled(self):
         #set this button to disable when data is not yet scanned
         self.btnNext.setEnabled(False)
         self.btnNext.clicked.connect(self.gotoSms)
+        self.btnRescan.setEnabled(False)
         self.btnNext_2.setEnabled(False)
+        self.label_19.setEnabled(False)
+        self.label_20.setEnabled(False)
+        self.label_21.setEnabled(False)
+        self.label_15.setEnabled(False)
+        self.label_16.setEnabled(False)
+        self.label_17.setEnabled(False)
+        self.label_18.setEnabled(False)
         self.btnNext.setStyleSheet("background-color:gray; border:gray")
-        
+        self.lblHeartRate.setText("-")
+        self.lblRoomTemp.setText("-")
+        self.lblOxygenLevel.setText("-")
+        self.lblBodyTemp.setText("-")
+        self.btnNext.setEnabled(False)
+        self.btnNext_2.setEnabled(False)
+        self.label.setText("")
+        self.label_7.setStyleSheet("background-color:#FFE7D7; border:1px solid #FFE7D7;")
+        self.label_9.setStyleSheet("background-color:#FFE7D7; border:1px solid #FFE7D7;")
+        self.label_11.setStyleSheet("background-color:#FFE7D7; border:1px solid #FFE7D7;")
+        self.lblScanning.setText("Scanning..")
+    def reScan(self):
+        self.setUiDisabled()
     def getNamedata(self):
         filename = "temp_user_name.csv"
         with open(filename, 'r') as r:
@@ -135,84 +164,63 @@ class Scanner(QDialog):
             for line_no , line in enumerate(csv_reader , 1):
                 if line_no == 2:
                     self.name = (line[0])
-                    self.lblName.setText(self.name)
+                    self.setName(self.name)
                     QApplication.processEvents()
         self.lblName.repaint() #this doesn't work
-    def update_Sensors(self, data ):
+        
+    def setName(self , name):
+        name = self.name
+        if (name != ""):
+            print("new name{}".format(name))
+            self.lblName.setText("{}".format(name))
+        
+    def update_Sensors(self, data):
         heartRate, oxySat , hrb , spb ,roomTemp,bodyTemp= data
         heartRate_val = int(heartRate)
         oxySat_val = int(oxySat)
        
         print("DEVICE STATUS: \t SCANNING SENSOR DATA...")
         ctr = btnctr + 1
-        self.lblRoomTemp.setText(str(roomTemp)+"° C")
+        self.label_15.setEnabled(True)
+        self.lblRoomTemp.setText(str(roomTemp)+"°C")
         if(hrb == True and spb ==True):
             
             print("DEVICE STATUS: \t VITALS DETECTED...")
             
-            self.lblBodyTemp.setText(str(bodyTemp)+"° C")
+            self.lblBodyTemp.setText(str(bodyTemp)+"°C")
             ctr = btnctr + 2
             self.label_7.setStyleSheet("background-color:#FF6600; border:1px solid rgb(255,102,0);")
-          
+            self.label_19.setEnabled(True)
+            self.label_16.setEnabled(True)
+        
             if(heartRate != -999 and  50 <= heartRate <= 150):
                 self.label_9.setStyleSheet("background-color:#FF6600; border:1px solid rgb(255,102,0);")
                 ctr = btnctr + 3
                 self.lblHeartRate.setText(str(heartRate_val))  # heart rate needs atleast 5-10 seconds and pressure to initialize
-                t = 4
+                self.label_20.setEnabled(True)
+                self.label_17.setEnabled(True)
+        
+        
                 if(oxySat >85):
-                    self.lblOxygenLevel.setText(str(oxySat_val) + "%")
-                    ctr = btnctr + 4
                     if(ctr >2 and hrb == True and spb ==True):
+                        self.lblOxygenLevel.setText(str(oxySat_val) + "%")
+                        ctr = btnctr + 4
+                        self.label_18.setEnabled(True)
+                        t = 4
+                        self.label_21.setEnabled(True)
                         while t:
                             s = divmod(t ,60)
                                 #time_format = '{:02}'.format(s)
                                 #print("Scanning in:" +time_format)
                             time.sleep(1)
                             t -=1
-                            if (t==0):
-                                break
-                            else:
-                                continue
-                        self.lblScanning.setText("Done Scanning")
                         self.btnNext.setEnabled(True)
                         self.btnNext_2.setEnabled(True)
+                        self.btnRescan.setEnabled(True)
+                        self.lblScanning.setText("Done Scanning")
                         self.label_11.setStyleSheet("background-color:#FF6600; border:1px solid rgb(255,102,0);")
                         self.btnNext.setStyleSheet("background-color:#FFE2CE; border:2px solid rgb(255,102,0);")
                         self.saveTempData(data)
-                """
-            if(oxySat_val < 50 and heartRate_val <50):
-                self.lblNotice.setText("please put pressure on the sensor")
-            else:
-                self.label.setText("")
-                if(heartRate != -999 and heartRate > 50):
-                    self.label_9.setStyleSheet("background-color:#FF6600; border:1px solid rgb(255,102,0);")
-                    ctr = btnctr + 3
-                    #print (ctr)
-                    self.lblHeartRate.setText(str(heartRate_val))  # heart rate needs atleast 5-10 seconds and pressure to initialize
-                    if(oxySat >50):
-                        self.lblOxygenLevel.setText(str(oxySat_val) + "%")
-                        ctr = btnctr + 4
-   
-                    if (ctr ==3):
-                        self.label.setText("")
-                        self.btnNext.setStyleSheet("background-color:#FFE2CE; border:2px solid rgb(255,102,0);")
-                        
-                    if (ctr == 4):
-                        
-                        while t:
-                            s = divmod(t ,60)
-                            #time_format = '{:02}'.format(s)
-                            #print("Scanning in:" +time_format)
-                            time.sleep(1)
-                            t -=1
-                            
-                        self.lblScanning.setText("Done Scanning")
-                        self.btnNext.setEnabled(True)
-                        self.btnNext_2.setEnabled(True)
-                        self.label_11.setStyleSheet("background-color:#FF6600; border:1px solid rgb(255,102,0);")
-                        self.btnNext.setStyleSheet("background-color:#FFE2CE; border:2px solid rgb(255,102,0);")
-                        self.saveTempData(data)
-                        """
             else:
                 self.lblNotice.setText("please put pressure on the sensor if you want to continue scanning")
                 ctr = btnctr + 1
@@ -232,24 +240,14 @@ class Scanner(QDialog):
             newuser = NewUser()  # <---Instantiate NewUser  Class
             widget.addWidget(newuser)
             widget.setCurrentIndex(widget.currentIndex() -1)  # <----Concat an index number to page 2.
-            #self.lblScanning.setText("Scanning..")
-            self.lblHeartRate.setText("-")
-            self.lblRoomTemp.setText("-")
-            self.lblOxygenLevel.setText("-")
-            self.lblBodyTemp.setText("-")
-            self.btnNext.setEnabled(False)
-            self.btnNext_2.setEnabled(False)
-            self.btnNext.setStyleSheet("background-color:gray; border:gray")
-            self.label.setText("")
-            self.label_7.setStyleSheet("background-color:#FFE7D7; border:1px solid #FFE7D7;")
-            self.label_9.setStyleSheet("background-color:#FFE7D7; border:1px solid #FFE7D7;")
-            self.label_11.setStyleSheet("background-color:#FFE7D7; border:1px solid #FFE7D7;")
-            self.lblScanning.setText("Scanning..")
+            self.setUiDisabled()
+            self.close()
+            
     def gotoSms(self):
         self.sendsms = SendSms()     
         widget.addWidget(self.sendsms)
         widget.setCurrentIndex(widget.currentIndex() + 1)
-    
+        self.close()
     def saveTempData(self , data):
         heartRate, oxySat , hrb , spb ,roomTemp,bodyTemp= data
         # field names will be assigned to the csv file
@@ -274,11 +272,11 @@ class SendSms(QDialog):
         loadUi("./src/uiFiles/Recepient.ui", self)
         self.btnBack.clicked.connect(self.goBack)
         self.btnSend.clicked.connect(self.validationSend)
+        self.btnRestart.clicked.connect(self.reStart)
         self.txtNumber.mousePressEvent = (self.mousePressed)
-        """thread = Thread(self)
-        thread.data_sensors.connect(self.validationSend)
-        """
+        self.disabledUiSms()
         userName = "temp_user_name.csv"
+        self.scan = Scanner()
         with open(userName, 'r') as n:
             csv_reader = csv.reader(n)
             for line_no , line in enumerate(csv_reader , 1):
@@ -286,6 +284,15 @@ class SendSms(QDialog):
                     v_name = (line[0])
                     self.lblName.setText(v_name)
                     self.lblName.repaint()
+    def reStart(self):
+        self.restart = MainWindow()
+        widget.addWidget(self.restart)
+        widget.setCurrentIndex(widget.currentIndex()-3)
+        self.scan.setUiDisabled()
+    def disabledUiSms(self):
+        self.btnRestart.setEnabled(False)
+        self.btnRestart2.setEnabled(False)
+        self.btnRestart.setStyleSheet("background-color:#FFE7D7; border:1px solid #FFE7D7;")
     def mousePressed(self, event):
         self.txtNumber.clear()
     def goBack(self):
@@ -297,6 +304,7 @@ class SendSms(QDialog):
         inp = (self.txtNumber.text()).lstrip()
         if(inp == ""):
             self.txtNumber.setText("9123456789")
+        self.disabledUiSms()
     def validationSend(self ):
         num = (self.txtNumber.text()).lstrip()
         if(num == "9123456789"):
@@ -312,7 +320,6 @@ class SendSms(QDialog):
                 msg.setText("Cannot send to empty phone number .")
                 msg.setIcon(QMessageBox.Warning)
                 x=msg.exec()
-                
             else:
                 nLen = len(num)
                 f_dig = num[0]
@@ -380,7 +387,10 @@ class SendSms(QDialog):
             msg.setWindowTitle("Success!")
             msg.setText("The data has been sent .")
             msg.setIcon(QMessageBox.Information)
-            x=msg.exec()  
+            x=msg.exec()
+            self.btnRestart.setEnabled(True)
+            self.btnRestart2.setEnabled(True)
+            self.btnRestart.setStyleSheet("background-color:#FFE2CE; border: 2px solid  rgb(255, 102, 0);")
 app = QApplication(sys.argv)
 mainwindow = MainWindow()
 widget = QStackedWidget()

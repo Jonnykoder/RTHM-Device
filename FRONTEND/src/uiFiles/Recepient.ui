@@ -63,8 +63,8 @@ font-weight: bold;</string>
    <widget class="QLabel" name="lblName">
     <property name="geometry">
      <rect>
-      <x>752</x>
-      <y>31</y>
+      <x>750</x>
+      <y>30</y>
       <width>273</width>
       <height>41</height>
      </rect>
@@ -275,6 +275,9 @@ font-weight: bold;</string>
     <property name="text">
      <string>9123456789</string>
     </property>
+    <property name="maxLength">
+     <number>10</number>
+    </property>
    </widget>
    <widget class="QLabel" name="lblNumber">
     <property name="geometry">
@@ -300,7 +303,7 @@ font: 64pX &quot;Montserrat&quot;;
 font-weight: bold;</string>
     </property>
     <property name="text">
-     <string>+63-</string>
+     <string>+63</string>
     </property>
    </widget>
    <widget class="QLabel" name="imgHello_2">
@@ -364,9 +367,12 @@ border:none;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btnRestart">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>-20</x>
+      <x>-10</x>
       <y>90</y>
       <width>231</width>
       <height>67</height>
@@ -397,11 +403,11 @@ font-weight: bold;</string>
      <string>Restart</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnNew_2">
+   <widget class="QPushButton" name="btnRestart2">
     <property name="geometry">
      <rect>
       <x>180</x>
-      <y>50</y>
+      <y>60</y>
       <width>64</width>
       <height>64</height>
      </rect>
@@ -416,7 +422,7 @@ border: none;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../images/icons/add.png</normaloff>../images/icons/add.png</iconset>
+      <normaloff>../images/icons/restart.png</normaloff>../images/icons/restart.png</iconset>
     </property>
    </widget>
    <zorder>imgHello_2</zorder>
@@ -434,7 +440,7 @@ border: none;</string>
    <zorder>btnInfo</zorder>
    <zorder>btnInfo_2</zorder>
    <zorder>btnRestart</zorder>
-   <zorder>btnNew_2</zorder>
+   <zorder>btnRestart2</zorder>
   </widget>
  </widget>
  <resources/>

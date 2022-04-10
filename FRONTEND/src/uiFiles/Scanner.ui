@@ -811,7 +811,8 @@ font-weight: bold;</string>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color:transparent;
-icon-size:60px;</string>
+icon-size:60px;
+border:none;</string>
    </property>
    <property name="text">
     <string/>

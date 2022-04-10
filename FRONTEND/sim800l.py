@@ -1,6 +1,7 @@
 import os,time,sys
 import serial
-
+import RPi.GPIO as GPIO  
+GPIO.setmode(GPIO.BOARD)  
 def convert_to_string(buf):
     try:
         tt =  buf.decode('utf-8').strip()
@@ -14,6 +15,8 @@ def convert_to_string(buf):
 
 class SIM800L:
     def __init__(self,ser):
+        self.ser=serial.Serial("/dev/ttyS0", baudrate=9600, timeout=1)
+        self.setup()
         try:
             self.ser=serial.Serial("/dev/ttyS0", baudrate=9600, timeout=1)
         except Exception as e:
