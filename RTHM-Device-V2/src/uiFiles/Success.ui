@@ -97,7 +97,7 @@ icon-size: 40px;</string>
    <property name="geometry">
     <rect>
      <x>170</x>
-     <y>20</y>
+     <y>10</y>
      <width>100</width>
      <height>100</height>
     </rect>
