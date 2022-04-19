@@ -1,4 +1,4 @@
-from json import load
+
 from PyQt5.uic import loadUi
 from PyQt5 import  QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QDialog, QApplication, QWidget, QStackedWidget ,QLabel,QLineEdit,QGridLayout,QDesktopWidget,QMessageBox,QPushButton
@@ -13,7 +13,7 @@ import logging
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow,self).__init__()
-        loadUi("./src/uiFilesV2/mainWindow.ui", self)
+        loadUi("./src/uiFiles/mainWindow.ui", self)
         self.btnPreferences.clicked.connect(self.view_preferences)   #set method to the button preferences
         self.btnScan.clicked.connect(self.goto_scanner)
         
@@ -73,7 +73,7 @@ class Preferences(QDialog):
     window_closed = pyqtSignal()
     def __init__(self):
         super(Preferences,self).__init__()
-        loadUi("./src/uiFilesV2/preferences.ui", self)  # <--import preferences ui file
+        loadUi("./src/uiFiles/preferences.ui", self)  # <--import preferences ui file
         self.btnCancel.clicked.connect(self.close_window) # <-- call close function
         self.btnSave.clicked.connect(self.confirm_dialog) #<-- call confirm dialog when button is clicked
         
@@ -147,7 +147,7 @@ class Scanner(QWidget):
     window_open = pyqtSignal()
     def __init__(self):
         super(Scanner,self).__init__()
-        loadUi("./src/uiFilesV2/scanner.ui", self)
+        loadUi("./src/uiFiles/scanner.ui", self)
         self.btnBack.clicked.connect(self.set_goback_confirmation)
         self.window_open.emit()
         self.load_data()
@@ -199,7 +199,7 @@ class Scanner(QWidget):
 class Sensor_guide(QDialog):
     def __init__(self):
         super(Sensor_guide,self).__init__()
-        loadUi("./src/uiFilesV2/sensor_guide.ui", self)
+        loadUi("./src/uiFiles/sensor_guide.ui", self)
         movie = QMovie("./src/images/gif/guide1.gif")
         self.labelGif.setMovie(movie)
         movie.start()
