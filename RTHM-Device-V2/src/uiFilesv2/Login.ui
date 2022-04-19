@@ -26,14 +26,14 @@
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>40</y>
+      <y>50</y>
       <width>455</width>
-      <height>351</height>
+      <height>341</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QGroupBox#groupBox{
-	background-color:rgb(47, 46, 65, 0.5);
+	background-color: #6f6f7c;
 	border-radius:5px;
 }</string>
     </property>
@@ -197,6 +197,22 @@ color: red;</string>
      </property>
      <property name="text">
       <string>(Required)</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>155</x>
+       <y>15</y>
+       <width>140</width>
+       <height>140</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Insert image here</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>
