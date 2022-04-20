@@ -6,263 +6,186 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>691</width>
-    <height>409</height>
+    <width>453</width>
+    <height>239</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QWidget" name="widget" native="true">
+  <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>691</width>
-     <height>421</height>
+     <x>20</x>
+     <y>60</y>
+     <width>411</width>
+     <height>171</height>
     </rect>
    </property>
-   <widget class="QGroupBox" name="groupBox">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>50</y>
-      <width>455</width>
-      <height>341</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QGroupBox#groupBox{
+   <property name="styleSheet">
+    <string notr="true">QGroupBox#groupBox{
 	background-color: #6f6f7c;
 	border-radius:5px;
 }</string>
-    </property>
-    <property name="title">
-     <string/>
-    </property>
-    <widget class="QPushButton" name="btnKeyboard">
-     <property name="geometry">
-      <rect>
-       <x>400</x>
-       <y>10</y>
-       <width>41</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">icon-size: 42px;
-background-color: transparent;
-border: none;</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normaloff>../images/icons/icon-toggle_keyboard.png</normaloff>../images/icons/icon-toggle_keyboard.png</iconset>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>25</x>
-       <y>160</y>
-       <width>211</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font-weight:bold;
-color: #ffffff;</string>
-     </property>
-     <property name="text">
-      <string>Device Password:</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="txtPassword">
-     <property name="geometry">
-      <rect>
-       <x>25</x>
-       <y>182</y>
-       <width>401</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-radius:3px;
-background-color:#ffffff;
-color:rgb(47, 46, 65);</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_3">
-     <property name="geometry">
-      <rect>
-       <x>55</x>
-       <y>230</y>
-       <width>341</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>10</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font-weight:bold;
-color: #ffffff;</string>
-     </property>
-     <property name="text">
-      <string>please login to change the preference</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="btnLogin">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>270</y>
-       <width>201</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #ffffff;
-border-radius:5px;
-background-color: rgb(255, 102, 0);
-padding: 10px;
-font-weight: bold;
-icon-size: 40px;</string>
-     </property>
-     <property name="text">
-      <string>LOGIN</string>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normaloff>../images/icons/icon-save.png</normaloff>../images/icons/icon-save.png</iconset>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_15">
-     <property name="geometry">
-      <rect>
-       <x>230</x>
-       <y>160</y>
-       <width>21</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>13</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">
-color: red;</string>
-     </property>
-     <property name="text">
-      <string>*</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_16">
-     <property name="geometry">
-      <rect>
-       <x>240</x>
-       <y>160</y>
-       <width>71</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Montserrat Light</family>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #ffffff;</string>
-     </property>
-     <property name="text">
-      <string>(Required)</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_5">
-     <property name="geometry">
-      <rect>
-       <x>155</x>
-       <y>15</y>
-       <width>140</width>
-       <height>140</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Insert image here</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QLabel" name="label">
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>0</y>
-      <width>641</width>
-      <height>51</height>
+      <x>20</x>
+      <y>30</y>
+      <width>71</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Montserrat</family>
-      <pointsize>28</pointsize>
+      <pointsize>10</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">font-weight:600;
-color: rgb(255, 102, 0);</string>
+     <string notr="true">font-weight:bold;
+color: #ffffff;</string>
     </property>
     <property name="text">
-     <string>DEVICE LOGIN REQUIRED</string>
+     <string>Password:</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLineEdit" name="txtPassword">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>110</y>
-      <width>195</width>
-      <height>195</height>
+      <x>20</x>
+      <y>50</y>
+      <width>351</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius:3px;
+background-color:#ffffff;
+color:rgb(47, 46, 65);</string>
     </property>
     <property name="text">
      <string/>
     </property>
-    <property name="pixmap">
-     <pixmap>../images/lock.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <zorder>label</zorder>
-   <zorder>label_4</zorder>
-   <zorder>groupBox</zorder>
+   <widget class="QPushButton" name="btnlogin">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>100</y>
+      <width>141</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #ffffff;
+border-radius:5px;
+background-color: rgb(255, 102, 0);
+padding: 10px;
+font-weight: bold;
+icon-size: 20px;</string>
+    </property>
+    <property name="text">
+     <string>LOGIN</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../images/icons/icon-save.png</normaloff>../images/icons/icon-save.png</iconset>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>20</y>
+      <width>20</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+color: red;</string>
+    </property>
+    <property name="text">
+     <string>*</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_16">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>30</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat Light</family>
+      <pointsize>6</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #ffffff;</string>
+    </property>
+    <property name="text">
+     <string>(Required)</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>641</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Montserrat</family>
+     <pointsize>23</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+     <stylestrategy>PreferAntialias</stylestrategy>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-weight:600;
+color: rgb(255, 102, 0);</string>
+   </property>
+   <property name="text">
+    <string>DEVICE LOGIN REQUIRED</string>
+   </property>
   </widget>
  </widget>
  <resources/>

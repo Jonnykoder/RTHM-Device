@@ -460,7 +460,7 @@ color:rgb(47, 46, 65);
       <string/>
      </property>
      <property name="maxLength">
-      <number>32767</number>
+      <number>10</number>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>

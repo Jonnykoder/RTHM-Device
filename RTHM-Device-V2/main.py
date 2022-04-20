@@ -1,4 +1,5 @@
 
+from traceback import print_tb
 from PyQt5.uic import loadUi
 from PyQt5 import  QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QDialog, QApplication, QWidget, QStackedWidget ,QLabel,QLineEdit,QGridLayout,QDesktopWidget,QMessageBox,QPushButton
@@ -16,10 +17,9 @@ class MainWindow(QMainWindow):
         loadUi("./src/uiFiles/mainWindow.ui", self)
         self.btnPreferences.clicked.connect(self.view_preferences)   #set method to the button preferences
         self.btnScan.clicked.connect(self.goto_scanner)
-        
         self.load_data()
-    def goto_scanner(self):
         
+    def goto_scanner(self):
         print("scanner enabled")
         self.scanner = Scanner()
         widget.addWidget(self.scanner)
@@ -28,22 +28,16 @@ class MainWindow(QMainWindow):
         self.view_guide()
         
     def view_preferences(self):
+        self.login = Login()
         self.preferences = Preferences()
         self.preferences.window_closed.connect(self.load_data)
-        self.preferences.show()
-        
+        self.login.show()
+       # self.preferences.show()
+       
     def view_guide(self):
         self.show_guide = Sensor_guide()
         self.show_guide.show()
-    """
-    def set_notice_msg (self):   <---reserved
-        msg = QMessageBox()
-        msg.setWindowTitle("Notice")
-        msg.setText("Please put your finger on the scanner.")
-        msg.setIcon(QMessageBox.Information)
-        msg.setStandardButtons(QMessageBox.Ok)
-        x=msg.exec()
-    """
+   
     def load_data(self):
         filename = ".temp_preferences.csv"
         try:
@@ -61,7 +55,7 @@ class MainWindow(QMainWindow):
                             self.pref = Preferences()
                             self.pref.btnSave.setText("Update")
                         else:
-                            print("================================\n|\tData Missing.... \t|\n================================")
+                            print("================================\n|\tData Missing.... \t|\n===========x=====================")
                             self.btnScan.setEnabled(False)
                             self.btnScan.setStyleSheet("background-color: #FF954F; border:none; icon-size: 53px;")
         except IOError: 
@@ -69,6 +63,43 @@ class MainWindow(QMainWindow):
         if not filename:
             raise ValueError('No data available')
         return filename
+    def Try(self):
+        print("dapat mag enable")
+    
+class Login(QDialog):
+    window_closed = pyqtSignal()
+    def __init__(self):
+        super(Login,self).__init__()
+        loadUi("./src/uiFiles/Login.ui", self) 
+        self.btnlogin.clicked.connect(self.validate_password)
+        
+    def validate_password(self):
+        var_pass = "admin"
+        var_input_pass = (self.txtPassword.text()).lstrip()
+        if (var_input_pass ==""):
+            msg = QMessageBox()
+            msg.setWindowTitle("Missing value")
+            msg.setText("Please enter the password ")
+            msg.setIcon(QMessageBox.Warning)
+            x=msg.exec()
+        else:
+            if (var_input_pass == var_pass):
+                print("success validation")
+                self.view_preferences_pass()
+                self.close()
+            else:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error")
+                msg.setText("Password Incorrect!")
+                msg.setIcon(QMessageBox.Warning)
+                x=msg.exec()
+    
+    def view_preferences_pass(self):
+        self.preferences = Preferences()
+        self.main = MainWindow()
+        #self.preferences.window_closed.connect(self.main.load_data)
+        self.preferences.show()
+    
 class Preferences(QDialog):
     window_closed = pyqtSignal()
     def __init__(self):
@@ -90,16 +121,33 @@ class Preferences(QDialog):
                 self.txtMobile.setStyleSheet("border:1px solid red;")
                 self.set_error_msg()
             else:
-                self.txtName.setStyleSheet("border: none;")
-                self.txtMobile.setStyleSheet("border: none;")
-                msg = QMessageBox()
-                msg.setWindowTitle("Save data")
-                msg.setText("Do you want to save this to preferences")
-                msg.setIcon(QMessageBox.Question)
-                msg.setStandardButtons(QMessageBox.Cancel|QMessageBox.Ok)
-                msg.setDefaultButton(QMessageBox.Cancel)
-                msg.buttonClicked.connect(self.save_data)
-                x=msg.exec()
+                nLen = len(r_mobile_number)
+                f_dig = r_mobile_number[0]
+                if (f_dig =="9" and r_mobile_number.isdigit()):
+                    if (nLen != 10):
+                        msg = QMessageBox()
+                        msg.setWindowTitle("Incomplete value")
+                        msg.setText("The phone number must contain 10 digits and starts with 9.")
+                        msg.setIcon(QMessageBox.Warning)
+                        x=msg.exec()
+                    else:
+                        self.txtName.setStyleSheet("border: none;")
+                        self.txtMobile.setStyleSheet("border: none;")
+                        msg = QMessageBox()
+                        msg.setWindowTitle("Save data")
+                        msg.setText("Do you want to save this to preferences")
+                        msg.setIcon(QMessageBox.Question)
+                        msg.setStandardButtons(QMessageBox.Cancel|QMessageBox.Ok)
+                        msg.setDefaultButton(QMessageBox.Cancel)
+                        msg.buttonClicked.connect(self.save_data)
+                        x=msg.exec()
+                        
+                else:
+                    msg = QMessageBox()
+                    msg.setWindowTitle("Error")
+                    msg.setText("Invalid Phone Number")
+                    msg.setIcon(QMessageBox.Warning)
+                    x=msg.exec()
         else:
             self.txtName.setStyleSheet("border:1px solid red;")
             self.set_error_msg()
@@ -153,14 +201,12 @@ class Scanner(QWidget):
         self.load_data()
         
     def load_data(self):
-        
         filename = ".temp_preferences.csv"
         try:
             with open(filename, 'r') as r:
                 csv_reader = csv.reader(r)
                 for line_no , line in enumerate(csv_reader , 1):
                     if line_no == 3:
-                      
                         self.name = (line[0])
                         self.room_name = (line[1])
                         self.room_no = (line[2])
@@ -191,7 +237,6 @@ class Scanner(QWidget):
             widget.addWidget(self.back_to_main)
             widget.setCurrentIndex(widget.currentIndex()-1)
             self.reset_values()
-            
             
     def reset_values(self):
             print("values has been reset.")
