@@ -206,7 +206,7 @@ border: none;</string>
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="btnNext">
+  <widget class="QPushButton" name="btnSend">
    <property name="enabled">
     <bool>false</bool>
    </property>
