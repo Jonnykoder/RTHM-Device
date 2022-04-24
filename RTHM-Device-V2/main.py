@@ -22,8 +22,9 @@ from mlx90614 import MLX90614
 from datetime import date , datetime
 import time
 from sim800l import SIM800L
-
 import RPi.GPIO as GPIO
+
+
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 GPIO.setup(18, GPIO.IN)
@@ -95,7 +96,6 @@ class MainWindow(QMainWindow):
    
     def load_data(self):
         filename = "temp_preferences.csv"
-        
         try:
             with open(filename, 'r') as r:
                 csv_reader = csv.reader(r)
@@ -303,6 +303,9 @@ class Scanner(QWidget):
     def reScan(self):
         self.setUiDisabled()
     
+    def reset_values(self):
+        self.setUiDisabled()
+        print("values has been reset.")
         
     def setUiDisabled(self):
         #set this button to disable when data is not yet scanned
@@ -340,7 +343,6 @@ class Scanner(QWidget):
         
         if(hrb == True and spb ==True):
             print("DEVICE STATUS: \t VITALS DETECTED...")
-            
             self.lblBodyTemp.setText(str(bodyTemp)+"°C")
             ctr = btnctr + 2
             self.label_7.setStyleSheet("background-color:#FF6600; border:1px solid rgb(255,102,0);")
@@ -455,6 +457,7 @@ class Scanner(QWidget):
             csvwriter.writerow(fields)
             # writing the data rows
             csvwriter.writerows(data)
+            
     def set_goback_confirmation(self):
         msg = QMessageBox()
         msg.setWindowTitle("go back")
@@ -474,11 +477,7 @@ class Scanner(QWidget):
             widget.setCurrentIndex(widget.currentIndex()-1)
             self.reset_values()
             
-    def reset_values(self):
-        self.setUiDisabled()
-        print("values has been reset.")
     def popup_button(self, i):
-        
         val = i.text()
         Today = date.today()
         d2day = Today.strftime("%B %d, %Y")
