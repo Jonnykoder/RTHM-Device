@@ -200,7 +200,7 @@ border: none;</string>
     <enum>QFrame::NoFrame</enum>
    </property>
    <property name="text">
-    <string/>
+    <string>Please put your finger on the sensor if you want to start scanning..</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

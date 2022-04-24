@@ -185,7 +185,7 @@ color:rgb(47, 46, 65);
       <rect>
        <x>280</x>
        <y>270</y>
-       <width>71</width>
+       <width>121</width>
        <height>21</height>
       </rect>
      </property>
@@ -241,7 +241,7 @@ color: red;</string>
       <rect>
        <x>160</x>
        <y>80</y>
-       <width>71</width>
+       <width>141</width>
        <height>21</height>
       </rect>
      </property>
@@ -347,7 +347,7 @@ color:rgb(47, 46, 65);
 </string>
      </property>
      <property name="text">
-      <string> Not set</string>
+      <string>Not set</string>
      </property>
      <property name="maxLength">
       <number>10</number>
@@ -508,7 +508,7 @@ border: none;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../images/icons/icon-toggle_keyboard.png</normaloff>../images/icons/icon-toggle_keyboard.png</iconset>
+      <normaloff>../../../../../.designer/images/icons/icon-toggle_keyboard.png</normaloff>../../../../../.designer/images/icons/icon-toggle_keyboard.png</iconset>
     </property>
    </widget>
    <widget class="QLabel" name="imgStartScreenLogo_2">
@@ -524,7 +524,7 @@ border: none;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../images/hello.png</pixmap>
+     <pixmap>../../../../../.designer/images/hello.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -597,7 +597,7 @@ QPushButton:hover{
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../images/icons/icon-cancel.png</normaloff>../images/icons/icon-cancel.png</iconset>
+      <normaloff>../../../../../.designer/images/icons/icon-cancel.png</normaloff>../../../../../.designer/images/icons/icon-cancel.png</iconset>
     </property>
     <property name="flat">
      <bool>false</bool>
@@ -637,7 +637,7 @@ icon-size: 40px;</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../images/icons/icon-save.png</normaloff>../images/icons/icon-save.png</iconset>
+      <normaloff>../../../../../.designer/images/icons/icon-save.png</normaloff>../../../../../.designer/images/icons/icon-save.png</iconset>
     </property>
     <property name="flat">
      <bool>false</bool>

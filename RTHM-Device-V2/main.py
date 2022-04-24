@@ -5,14 +5,13 @@ import PyQt5
 import max30102
 import sys
 import hrcalc
-
+import os
 from traceback import print_tb
 from PyQt5.uic import loadUi
-from PyQt5 import  QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QDialog, QApplication, QWidget, QStackedWidget ,QLabel,QLineEdit,QGridLayout,QDesktopWidget,QMessageBox,QPushButton
 from PyQt5 import QtGui
 from PyQt5.QtGui import QPixmap, QMovie
-from PyQt5 import QtCore
+from PyQt5 import QtCore ,QtGui, QtWidgets
 from PyQt5.QtCore import pyqtSignal, QCoreApplication
 import sys
 import csv
@@ -34,6 +33,19 @@ bus = SMBus(1)
 sensor = MLX90614(bus, address=0x5A)
 btnctr =0
 ctr = btnctr
+
+def handleVisibleChanged():
+    if not QtGui.QGuiApplication.inputMethod().isVisible():
+        return
+    for w in QtGui.QGuiApplication.allWindows():
+        if w.metaObject().className() == "QtVirtualKeyboard::InputView":
+            keyboard = w.findChild(QtCore.QObject, "keyboard")
+            if keyboard is not None:
+                r = w.geometry()
+                r.moveTop(keyboard.property("y"))
+                w.setMask(QtGui.QRegion(r))
+                return
+os.environ["QT_IM_MODULE"] = "qtvirtualkeyboard"
 
 #Run Sensors on Thread
 class Thread(QtCore.QThread):
@@ -116,18 +128,21 @@ class Login(QDialog):
     window_closed = pyqtSignal()
     def __init__(self):
         super(Login,self).__init__()
-        loadUi("./src/uiFiles/Login.ui", self) 
+        QtGui.QGuiApplication.inputMethod().visibleChanged.connect(handleVisibleChanged)
+        loadUi("./src/uiFiles/Login.ui", self)
+        self.txtPassword.setEchoMode(QtWidgets.QLineEdit.Password)
         self.btnlogin.clicked.connect(self.validate_password)
         
+        
     def validate_password(self):
-        var_pass = "admin"
+        var_pass = "Admin"
         var_input_pass = (self.txtPassword.text()).lstrip()
         if (var_input_pass ==""):
             msg = QMessageBox()
             msg.setWindowTitle("Missing value")
             msg.setText("Please enter the password ")
             msg.setIcon(QMessageBox.Warning)
-            x=msg.exec()
+            msg.exec_()
         else:
             if (var_input_pass == var_pass):
                 print("success validation")
@@ -138,7 +153,7 @@ class Login(QDialog):
                 msg.setWindowTitle("Error")
                 msg.setText("Password Incorrect!")
                 msg.setIcon(QMessageBox.Warning)
-                x=msg.exec()
+                msg.exec_()
     
     def view_preferences_pass(self):
         self.preferences = Preferences()
@@ -151,6 +166,7 @@ class Preferences(QDialog):
     def __init__(self):
         super(Preferences,self).__init__()
         loadUi("./src/uiFiles/preferences.ui", self)  # <--import preferences ui file
+        QtGui.QGuiApplication.inputMethod().visibleChanged.connect(handleVisibleChanged)
         self.btnCancel.clicked.connect(self.close_window) # <-- call close function
         self.btnSave.clicked.connect(self.confirm_dialog) #<-- call confirm dialog when button is clicked
         
@@ -175,7 +191,7 @@ class Preferences(QDialog):
                         msg.setWindowTitle("Incomplete value")
                         msg.setText("The phone number must contain 10 digits and starts with 9.")
                         msg.setIcon(QMessageBox.Warning)
-                        x=msg.exec()
+                        msg.exec_()
                     else:
                         self.txtName.setStyleSheet("border: none;")
                         self.txtMobile.setStyleSheet("border: none;")
@@ -186,14 +202,14 @@ class Preferences(QDialog):
                         msg.setStandardButtons(QMessageBox.Cancel|QMessageBox.Ok)
                         msg.setDefaultButton(QMessageBox.Cancel)
                         msg.buttonClicked.connect(self.save_data)
-                        x=msg.exec()
+                        msg.exec_()
                         
                 else:
                     msg = QMessageBox()
                     msg.setWindowTitle("Error")
                     msg.setText("Invalid Phone Number")
                     msg.setIcon(QMessageBox.Warning)
-                    x=msg.exec()
+                    msg.exec_()
         else:
             self.txtName.setStyleSheet("border:1px solid red;")
             self.set_error_msg()
@@ -203,17 +219,25 @@ class Preferences(QDialog):
         msg.setText("Please fill out the missing field to proceed saving")
         msg.setIcon(QMessageBox.Warning)
         msg.setStandardButtons(QMessageBox.Ok)
-        x=msg.exec()
+        msg.exec_()
    
     def save_data(self , i): #<--- This will save the data to local temporary storage (not a database)
         self.main = MainWindow()
         val = i.text()
+        
         if(val == "OK"):
             self.main.load_data()
             self.set_success_msg()
             p_name = (self.txtName.text()).lstrip()
             p_room_name =(self.txtRoomName.text()).lstrip()
             p_room_number =(self.txtRoomNumber.text()).lstrip()
+            
+            if (p_room_name==""):
+                p_room_name = "Not set"
+            elif(p_room_number == ""):
+                p_room_number == "Not set"
+            
+            
             r_mobile_number =(self.txtMobile.text()).lstrip()
             fields = ['Patient_name','room_name','room_number','recipient_mobile']
             data = [[p_name,p_room_name,p_room_number,r_mobile_number]]
@@ -235,7 +259,7 @@ class Preferences(QDialog):
         msg.setText("Data saved successfully!")
         msg.setIcon(QMessageBox.Information)
         msg.setStandardButtons(QMessageBox.Ok)
-        x=msg.exec()
+        msg.exec_()
     def close_window(self):
         self.close()
 
@@ -251,7 +275,7 @@ class Scanner(QWidget):
         thread = Thread(self)
         thread.data_sensors.connect(self.update_Sensors)
         thread.start()
-    
+        
     def set_name(self):
         pref_data = "temp_preferences.csv"
         with open(pref_data, 'r') as n:
@@ -275,7 +299,7 @@ class Scanner(QWidget):
         msg.setStandardButtons(QMessageBox.Cancel|QMessageBox.Ok)
         msg.setDefaultButton(QMessageBox.Cancel)
         msg.buttonClicked.connect(self.popup_button)
-        x=msg.exec()
+        msg.exec_()
     def reScan(self):
         self.setUiDisabled()
     
@@ -313,8 +337,8 @@ class Scanner(QWidget):
         ctr = btnctr + 1
         self.label_15.setEnabled(True)
         self.lblRoomTemp.setText(str(roomTemp)+"°C")
+        
         if(hrb == True and spb ==True):
-            
             print("DEVICE STATUS: \t VITALS DETECTED...")
             
             self.lblBodyTemp.setText(str(bodyTemp)+"°C")
@@ -323,14 +347,14 @@ class Scanner(QWidget):
             self.label_19.setEnabled(True)
             self.label_16.setEnabled(True)
         
-            if(heartRate != -999 and  50 <= heartRate <= 150):
+            if(heartRate != -999 and  0 <= heartRate <= 150):
                 self.label_9.setStyleSheet("background-color:#FF6600; border:1px solid rgb(255,102,0);")
                 ctr = btnctr + 3
                 self.lblHeartRate.setText(str(heartRate_val))  # heart rate needs atleast 5-10 seconds and pressure to initialize
                 self.label_20.setEnabled(True)
                 self.label_17.setEnabled(True)
         
-                if(oxySat >85):
+                if(oxySat >70):
                     if(ctr >2 and hrb == True and spb ==True):
                         self.lblOxygenLevel.setText(str(oxySat_val) + "%")
                         ctr = btnctr + 4
@@ -353,6 +377,66 @@ class Scanner(QWidget):
             else:
                 self.lblNotice.setText("please put pressure on the sensor if you want to continue scanning")
                 ctr = btnctr + 1
+                
+    def update_Sensors_data(self, data ):
+        heartRate, oxySat , hrb , spb ,roomTemp,bodyTemp= data
+        heartRate_val = int(heartRate)
+        oxySat_val = int(oxySat)
+        print("DEVICE STATUS: \t SCANNING SENSOR DATA...")
+        self.label_15.setEnabled(True)
+        self.lblRoomTemp.setText(str(roomTemp)+"°C")
+        t = 10
+        if(hrb == True and spb ==True ):
+            
+            print("DEVICE STATUS: \t VITALS DETECTED...")
+            while t:
+                print(t)
+                time.sleep(1)
+                
+                if (t == 10):
+                    if(hrb == True and spb ==True ):
+                        self.lblBodyTemp.setText(str(bodyTemp)+"°C")
+                        self.label_7.setStyleSheet("background-color:#FF6600; border:1px solid rgb(255,102,0);")
+                        self.label_19.setEnabled(True)
+                        self.label_16.setEnabled(True)
+                        self.lblBodyTemp.repaint()
+                    else:
+                        break
+                elif(t == 5):
+                    if(hrb == True and spb ==True ):
+                        self.lblHeartRate.setText(str(heartRate_val))
+                        self.label_9.setStyleSheet("background-color:#FF6600; border:1px solid rgb(255,102,0);")
+                        self.label_17.setEnabled(True)
+                        self.label_20.setEnabled(True)
+                        self.lblHeartRate.repaint()
+                    else:
+                        break
+                elif(t == 3):
+                    if(hrb == True and spb ==True ):
+                        self.lblOxygenLevel.setText(str(oxySat_val) + "%")
+                        self.label_11.setStyleSheet("background-color:#FF6600; border:1px solid rgb(255,102,0);")
+                        self.label_18.setEnabled(True)
+                        self.label_21.setEnabled(True)
+                        self.lblOxygenLevel.repaint()
+                    else:
+                        break
+                if (t == 1):
+                    break
+                t -=1
+                
+                
+            hrb = False
+            spb = False
+            self.btnSend.setEnabled(True)
+            self.btnNext_2.setEnabled(True)
+            self.btnRescan.setEnabled(True)
+            self.lblScanning.setText("Done Scanning")
+            self.label_11.setStyleSheet("background-color:#FF6600; border:1px solid rgb(255,102,0);")
+            self.btnSend.setStyleSheet("background-color:#FFE2CE; border:2px solid rgb(255,102,0);")
+            self.saveTempData(data)
+            self.btnSend.repaint()
+        else:
+            self.lblNotice.setText("Please put your finger on the sensor if you want to continue scanning..")
     def saveTempData(self , data):
         heartRate, oxySat , hrb , spb ,roomTemp,bodyTemp= data
         # field names will be assigned to the csv file
@@ -379,7 +463,7 @@ class Scanner(QWidget):
         msg.setStandardButtons(QMessageBox.Cancel|QMessageBox.Ok)
         msg.setDefaultButton(QMessageBox.Cancel)
         msg.buttonClicked.connect(self.go_back)
-        x=msg.exec()
+        msg.exec_()
         
     def go_back(self , i):
         val = i.text()
@@ -438,7 +522,7 @@ class Scanner(QWidget):
             msg.setWindowTitle("Success!")
             msg.setText("The data has been sent .")
             msg.setIcon(QMessageBox.Information)
-            x=msg.exec()
+            msg.exec_()
 class Sensor_guide(QDialog):
     def __init__(self):
         super(Sensor_guide,self).__init__()

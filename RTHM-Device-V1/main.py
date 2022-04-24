@@ -5,7 +5,7 @@ import PyQt5
 import max30102
 import sys
 import hrcalc
-
+import os
 import RPi.GPIO as GPIO
 from PyQt5.uic import loadUi
 from PyQt5 import  QtWidgets
@@ -29,7 +29,7 @@ bus = SMBus(1)
 sensor = MLX90614(bus, address=0x5A)
 btnctr =0
 ctr = btnctr
-
+os.environ["QT_IM_MODULE"] = "qtvirtualkeyboard"
 #Run Sensors on Thread
 class Thread(QtCore.QThread):
   
