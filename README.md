@@ -12,6 +12,5 @@ Real time health monitoring device for covid patients source code
 # Schematic Diagram
 ![ALL NEW TABLES-Circuit Diagram Newewe drawio (2)](https://user-images.githubusercontent.com/74230834/167674031-26265393-75e1-46d5-b654-60a0a59ec470.png)
 
-
-#Capstone Documentation 
+# Capstone Documentation 
   link: https://1drv.ms/b/s!AtHeCGT4zR2dgkwu4S19NK4sfc8W?e=Mk3hui
