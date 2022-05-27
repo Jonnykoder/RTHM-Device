@@ -1,5 +1,5 @@
 # RTHM-Device
-Real time health monitoring device for covid patients source code
+Real time health monitoring device for covid patients source code | 
 Developer: John Eric Azores
 
 # Sensors 
