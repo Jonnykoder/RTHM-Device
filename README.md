@@ -1,5 +1,6 @@
 # RTHM-Device
 Real time health monitoring device for covid patients source code
+Developer: John Eric Azores
 
 # Sensors 
   Max30102 - Heart Rate and Oxygen Sensor
@@ -14,3 +15,4 @@ Real time health monitoring device for covid patients source code
 
 # Capstone Documentation 
   link: https://1drv.ms/b/s!AtHeCGT4zR2dgkwu4S19NK4sfc8W?e=Mk3hui
+  
